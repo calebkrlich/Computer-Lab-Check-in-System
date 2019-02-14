@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>HomePageView.qml</file>
+        <file>HomePageViewForm.ui.qml</file>
+        <file>logo_1.png.jpg</file>
+    </qresource>
+</RCC>
