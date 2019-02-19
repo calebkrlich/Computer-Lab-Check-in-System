@@ -3,6 +3,7 @@
 #include "checkinview.h"
 #include "databasecontroller.h"
 #include "studentinformation.h"
+#include "tablemethods.h"
 
 #include <QtSql>
 
@@ -20,11 +21,8 @@ HomePageView::~HomePageView()
 
 void HomePageView::on_CheckInButton_clicked()
 {
-    qInfo("Run Check-In Routine");
-
     checkInView = new CheckInView(this);
     checkInView->show();
-
 }
 
 void HomePageView::on_CheckOutButton_clicked()
@@ -35,20 +33,30 @@ void HomePageView::on_CheckOutButton_clicked()
 
 void HomePageView::on_AddEventButton_clicked()
 {
-    //This needs to change when i get the database working
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("127.0.0.1");
-    db.setPort(3306);
-    db.setDatabaseName("My DB");
-    db.setUserName("root");
-    db.setPassword("q1w2e3r4");
+    //create a new database connection
+    DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");
 
-    if(db.open())
+    //open the database
+    db.openDatabase();
+
+    //fetch rows from the database
+    QSqlQuery query = db.getStudent("1");
+
+    //cycle through the rows
+    while(query.next())
     {
-        QSqlQuery query(db);
-        query.exec("SELECT UID FROM LOGS WHERE UID = 1");
-    }
+        /*
+        int uid = query.value(0).toInt();
+        QString YSU_ID = query.value(1).toString();
+        qDebug() << uid << YSU_ID;
+        */
+        QList<QString> rowToAdd;
 
+        rowToAdd.append(query.value(0).toString());
+        rowToAdd.append(query.value(1).toString());
+
+        TableOperators::addRow(ui->tableWidget,rowToAdd);
+    }
 }
 
 //Testing function for show functionally of signed in student layout
@@ -59,10 +67,10 @@ void HomePageView::on_AddSignedInButton_clicked()
     newStudent.firstName = "John";
     newStudent.lastName = "Doe";
 
-    QLabel *studentFirstName = new QLabel("FirstName");
-    QLabel *studentLastName = new QLabel("LastName");
-    QLabel *studentYID = new QLabel("YSU ID");
+    QList<QString> valuesToAdd;
 
-    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-    //ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,9);
+    valuesToAdd.append(newStudent.firstName);
+    valuesToAdd.append(newStudent.lastName);
+
+    TableOperators::addRow(ui->tableWidget,valuesToAdd);
 }

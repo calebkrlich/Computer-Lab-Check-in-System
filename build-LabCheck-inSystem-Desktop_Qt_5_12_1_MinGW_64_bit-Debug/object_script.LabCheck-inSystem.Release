@@ -1,0 +1,14 @@
+release/main.o
+release/checkinview.o
+release/homepageview.o
+release/checkedinview.o
+release/cardparser.o
+release/checkimanualview.o
+release/checkoutview.o
+release/databasecontroller.o
+release/tablemethods.o
+release/moc_checkinview.o
+release/moc_homepageview.o
+release/moc_checkedinview.o
+release/moc_checkimanualview.o
+release/moc_checkoutview.o

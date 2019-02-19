@@ -4,17 +4,21 @@
 #include <QtSql/QSql>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
+
+
+
 class DatabaseController
 {
 private:
     QSqlDatabase database;
 
 public:
-    DatabaseController(QString dbName, QString hostName, QString port, QString username, QString password);
-    DatabaseController();
+   DatabaseController(QString databaseType, QString hostName, QString databaseName, QString userName, QString password);
 
-    void getStudent(QString ID);
-    void getLog(QString ID);
+   bool openDatabase();
+
+   QSqlQuery getStudent(QString ID);
+   QSqlQuery getLog(QString ID);
 };
 
 #endif // DATABASECONTROLLER_H

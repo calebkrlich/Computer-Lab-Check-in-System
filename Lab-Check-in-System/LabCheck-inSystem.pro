@@ -41,7 +41,8 @@ HEADERS += \
     checkimanualview.h \
     checkoutview.h \
     databasecontroller.h \
-    studentinformation.h
+    studentinformation.h \
+    tablemethods.h
 
 FORMS += \
     checkinview.ui \

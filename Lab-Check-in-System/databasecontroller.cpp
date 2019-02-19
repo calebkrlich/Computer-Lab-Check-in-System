@@ -1,32 +1,40 @@
 #include "databasecontroller.h"
 
-DatabaseController::DatabaseController(QString dbName, QString hostName, QString port, QString username, QString password)
+DatabaseController::DatabaseController(QString databaseType, QString hostName, QString databaseName, QString userName, QString password)
 {
-    database.addDatabase("QMYSQL");
+    database = QSqlDatabase::addDatabase(databaseType);
     database.setHostName(hostName);
-    database.setPort(port.toShort());
-    database.setUserName(username);
+    database.setDatabaseName(databaseName);
+    database.setUserName(userName);
     database.setPassword(password);
     database.open();
 }
-DatabaseController::DatabaseController()
-{
 
+bool DatabaseController::openDatabase()
+{
+    return database.open();
 }
 
-void DatabaseController::getLog(QString ID)
+//fetches a specific log based off of uid
+QSqlQuery DatabaseController::getLog(QString UID)
 {
     QString queryString;
-    QSqlQuery query;
+    QSqlQuery queryToReturn;
 
-    queryString = ("SELECT UID FROM LOGS WHERE UID = " + ID.toLatin1());
+    queryString = ("SELECT UID FROM LOGS WHERE UID = " + UID.toLatin1());
 
-    query.exec(queryString.toLatin1());
+    queryToReturn.exec(queryString.toLatin1());
 
-
+    return queryToReturn;
 }
 
-void DatabaseController::getStudent(QString ID)
+QSqlQuery DatabaseController::getStudent(QString UID)
 {
+    QString queryString;
+    QSqlQuery queryToReturn;
 
+    queryString = ("select * from students where UID = " + UID.toLatin1());
+
+    queryToReturn.exec(queryString.toLatin1());
+    return queryToReturn;
 }
