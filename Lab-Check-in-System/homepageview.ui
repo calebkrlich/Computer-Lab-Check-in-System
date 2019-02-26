@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>800</height>
+    <width>1062</width>
+    <height>524</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -62,13 +62,13 @@
     <property name="title">
      <string>Signed-in Students</string>
     </property>
-    <widget class="QTableWidget" name="tableWidget">
+    <widget class="QTableWidget" name="SignedInTable">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
+       <y>30</y>
        <width>421</width>
-       <height>319</height>
+       <height>331</height>
       </rect>
      </property>
      <column>
@@ -165,18 +165,43 @@
      </layout>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_3">
+   <widget class="QGroupBox" name="EventsGroupBox">
     <property name="geometry">
      <rect>
       <x>650</x>
       <y>100</y>
-      <width>521</width>
+      <width>401</width>
       <height>371</height>
      </rect>
     </property>
     <property name="title">
      <string>Events</string>
     </property>
+    <widget class="QTableWidget" name="EventTable">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>381</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>New Column</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>End Time</string>
+      </property>
+     </column>
+    </widget>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -206,7 +231,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1200</width>
+     <width>1062</width>
      <height>20</height>
     </rect>
    </property>

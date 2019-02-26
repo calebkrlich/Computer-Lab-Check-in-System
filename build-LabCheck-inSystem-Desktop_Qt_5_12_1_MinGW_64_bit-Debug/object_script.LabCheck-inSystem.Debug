@@ -6,8 +6,10 @@ debug/cardparser.o
 debug/checkimanualview.o
 debug/checkoutview.o
 debug/databasecontroller.o
+debug/addeventview.o
 debug/moc_checkinview.o
 debug/moc_homepageview.o
 debug/moc_checkedinview.o
 debug/moc_checkimanualview.o
 debug/moc_checkoutview.o
+debug/moc_addeventview.o

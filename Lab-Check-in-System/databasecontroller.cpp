@@ -59,12 +59,12 @@ bool DatabaseController::postStudent(int UID, QString YSUID, QString firstName, 
     return queryToExecute.exec(queryString.toLatin1());
 }
 
-QSqlQuery DatabaseController::getStudent(QString UID)
+QSqlQuery DatabaseController::getStudentFromID(QString ID)
 {
     QString queryString;
     QSqlQuery queryToReturn;
 
-    queryString = ("select * from students where UID = " + UID.toLatin1());
+    queryString = ("select * from students where YSU_ID = " + ID.toLatin1());
 
     queryToReturn.exec(queryString.toLatin1());
     return queryToReturn;

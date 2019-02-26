@@ -20,7 +20,8 @@ public:
 
 
    int getRowCount(QString table);
-   QSqlQuery getStudent(QString ID);
+
+   QSqlQuery getStudentFromID(QString ID);
    bool postStudent(int UID, QString YSUID, QString firstName,QString lastName);
    QSqlQuery getLog(QString ID);
 };

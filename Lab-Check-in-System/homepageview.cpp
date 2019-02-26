@@ -33,6 +33,8 @@ void HomePageView::on_CheckOutButton_clicked()
 
 void HomePageView::on_AddEventButton_clicked()
 {
+
+    /*
     //create a new database connection
     DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");
 
@@ -40,7 +42,7 @@ void HomePageView::on_AddEventButton_clicked()
     db.openDatabase();
 
     //fetch rows from the database
-    QSqlQuery query = db.getStudent("1");
+    QSqlQuery query = db.getStudentFromID("000001");
 
     //cycle through the rows
     while(query.next())
@@ -49,7 +51,7 @@ void HomePageView::on_AddEventButton_clicked()
         int uid = query.value(0).toInt();
         QString YSU_ID = query.value(1).toString();
         qDebug() << uid << YSU_ID;
-        */
+
         QList<QString> rowToAdd;
 
         rowToAdd.append(query.value(0).toString());
@@ -57,6 +59,12 @@ void HomePageView::on_AddEventButton_clicked()
 
         TableOperators::addRow(ui->tableWidget,rowToAdd);
     }
+
+    */
+
+    addEventView = new AddEventView();
+    addEventView->show();
+
 }
 
 //Testing function for show functionally of signed in student layout
@@ -72,5 +80,5 @@ void HomePageView::on_AddSignedInButton_clicked()
     valuesToAdd.append(newStudent.firstName);
     valuesToAdd.append(newStudent.lastName);
 
-    TableOperators::addRow(ui->tableWidget,valuesToAdd);
+    TableOperators::addRow(ui->SignedInTable,valuesToAdd);
 }

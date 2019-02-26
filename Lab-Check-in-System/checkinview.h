@@ -19,16 +19,20 @@ public:
     explicit CheckInView(QWidget *parent = nullptr);
     ~CheckInView();
 
-private slots:
-    void on_CheckInButton_clicked();
-
-    void on_CancelButton_clicked();
-
-    void on_ManualCheckInButton_clicked();
-
 private:
     Ui::CheckInView *ui;
     CheckIManualView *checkInManualView;
+
+signals:
+    void studentCheckedIn(CardInfo card);
+
+
+private slots:
+    void on_CheckInButton_clicked();
+    void on_CancelButton_clicked();
+    void on_ManualCheckInButton_clicked();
+
+
 };
 
 #endif // CHECKINVIEW_H

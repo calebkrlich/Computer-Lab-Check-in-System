@@ -5,6 +5,7 @@
 #include "checkinview.h"
 #include "checkimanualview.h"
 #include "checkoutview.h"
+#include "addeventview.h"
 
 namespace Ui {
 class HomePageView;
@@ -17,6 +18,9 @@ class HomePageView : public QMainWindow
 public:
     explicit HomePageView(QWidget *parent = nullptr);
     ~HomePageView();
+
+signals:
+    void StudentListChange();   //A Signal that is called when a new student is added
 
 private slots:
     void on_CheckInButton_clicked();
@@ -31,6 +35,7 @@ private:
     Ui::HomePageView *ui;
     CheckInView *checkInView;
     CheckOutView *checkOutView;
+    AddEventView *addEventView;
 
     int studentsCheckedIn = 0;
 };

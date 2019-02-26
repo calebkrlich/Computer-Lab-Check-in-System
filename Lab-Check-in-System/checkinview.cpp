@@ -35,18 +35,17 @@ void CheckInView::on_CheckInButton_clicked()
                           QString::number(parsedCardInfo.ID),
                           parsedCardInfo.firstName,
                           parsedCardInfo.lastName))
-            qInfo() << "Sucessfully added testing student";
+        {
 
-        else {
+            QMessageBox conformationBox;                    //Creates a notification popup for user
+            conformationBox.setText("Student signed-in");
+            conformationBox.exec();
+            this->close();
+        }
+        else
+        {
             qInfo() << "Database error";
         }
-
-        //cardParser.printInfo(); //DEBUGGING: displays card parse info
-
-        QMessageBox conformationBox;        //Creates a notification popup for user
-        conformationBox.setText("Student signed-in");
-        conformationBox.exec();
-
     }
 
     else
