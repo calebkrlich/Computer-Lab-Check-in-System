@@ -6,7 +6,6 @@ release/cardparser.o
 release/checkimanualview.o
 release/checkoutview.o
 release/databasecontroller.o
-release/tablemethods.o
 release/moc_checkinview.o
 release/moc_homepageview.o
 release/moc_checkedinview.o

@@ -143,6 +143,8 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(10, 10, 251, 81));
+        label->setText(QString::fromUtf8(""));
+        label->setTextFormat(Qt::RichText);
         label->setPixmap(QPixmap(QString::fromUtf8("logo_1.png.jpg")));
         label->setScaledContents(true);
         HomePageView->setCentralWidget(centralwidget);
@@ -198,7 +200,6 @@ public:
         CheckInButton->setText(QApplication::translate("HomePageView", "Check In", nullptr));
         AddSignedInButton->setText(QApplication::translate("HomePageView", "Add Signed-In", nullptr));
         groupBox_3->setTitle(QApplication::translate("HomePageView", "Events", nullptr));
-        label->setText(QString());
         menuLab_Check_in_System->setTitle(QApplication::translate("HomePageView", "File", nullptr));
         menuEdit->setTitle(QApplication::translate("HomePageView", "Edit", nullptr));
         menuView->setTitle(QApplication::translate("HomePageView", "View", nullptr));

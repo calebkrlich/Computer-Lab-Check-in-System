@@ -1,6 +1,6 @@
 #include "checkinview.h"
 #include "ui_checkinview.h"
-
+#include "databasecontroller.h"
 
 CheckInView::CheckInView(QWidget *parent) :
     QDialog(parent),
@@ -16,13 +16,39 @@ CheckInView::~CheckInView()
 
 void CheckInView::on_CheckInButton_clicked()
 {
-    QString cardInfoText = ui->CardInputLineEdit->text();
+    QString cardText = ui->CardInputLineEdit->text();
+    CardInfo parsedCardInfo;
 
     CardParser cardParser = CardParser();
-    bool validCard = cardParser.Parse(cardInfoText.toLatin1());
+    bool validCard = cardParser.Parse(cardText.toLatin1());
+    parsedCardInfo = cardParser.getInfo();
 
     if(validCard)
-        cardParser.printInfo();
+    {
+
+        DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");           //This needs to be it's own class
+        db.openDatabase();
+
+        int uid = db.getRowCount("students") + 1;   //create a unique id from the last row's id
+
+        if(db.postStudent(uid,
+                          QString::number(parsedCardInfo.ID),
+                          parsedCardInfo.firstName,
+                          parsedCardInfo.lastName))
+            qInfo() << "Sucessfully added testing student";
+
+        else {
+            qInfo() << "Database error";
+        }
+
+        //cardParser.printInfo(); //DEBUGGING: displays card parse info
+
+        QMessageBox conformationBox;        //Creates a notification popup for user
+        conformationBox.setText("Student signed-in");
+        conformationBox.exec();
+
+    }
+
     else
     {
         ui->SwipeCardLabel->setText("Invalid Card, Swipe Again");

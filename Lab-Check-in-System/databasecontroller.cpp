@@ -1,4 +1,5 @@
 #include "databasecontroller.h"
+#include <QDebug>
 
 DatabaseController::DatabaseController(QString databaseType, QString hostName, QString databaseName, QString userName, QString password)
 {
@@ -15,6 +16,20 @@ bool DatabaseController::openDatabase()
     return database.open();
 }
 
+int DatabaseController::getRowCount(QString table)
+{
+   QString queryString;
+   QSqlQuery queryToReturn;
+
+   queryString = ("SELECT COUNT(*) FROM " + table.toLatin1());
+
+   queryToReturn.exec(queryString.toLatin1());
+
+   queryToReturn.next();    //Must call in order to get query result
+
+   return queryToReturn.value(0).toInt();   //convert the returned string to int
+}
+
 //fetches a specific log based off of uid
 QSqlQuery DatabaseController::getLog(QString UID)
 {
@@ -26,6 +41,22 @@ QSqlQuery DatabaseController::getLog(QString UID)
     queryToReturn.exec(queryString.toLatin1());
 
     return queryToReturn;
+}
+
+bool DatabaseController::postStudent(int UID, QString YSUID, QString firstName, QString lastName)
+{
+    QString queryString;
+    QSqlQuery queryToExecute;
+
+    //gross representation of a query
+    queryString = ("INSERT INTO students (UID,YSU_ID,NAME_FIRST,NAME_LAST) VALUES (" +
+                   QString::number(UID) + "," + "'" +
+                   YSUID.toLatin1() + "'" + "," + "'" +
+                   firstName.toLatin1() + "'" + "," + "'" +
+                   lastName.toLatin1() + "'" + ");");
+    qInfo() << queryString;
+
+    return queryToExecute.exec(queryString.toLatin1());
 }
 
 QSqlQuery DatabaseController::getStudent(QString UID)

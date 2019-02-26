@@ -188,7 +188,10 @@
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string notr="true"/>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::RichText</enum>
     </property>
     <property name="pixmap">
      <pixmap>logo_1.png.jpg</pixmap>
