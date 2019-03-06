@@ -37,6 +37,8 @@ public:
     QDateTimeEdit *startTimeDateTimeEdit;
     QLabel *endTimeLabel;
     QDateTimeEdit *endTimeDateTimeEdit;
+    QLabel *roomLabel;
+    QLineEdit *roomLineEdit;
     QWidget *horizontalLayoutWidget_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *AddEventLabel;
@@ -81,22 +83,32 @@ public:
         StartTimeLabel = new QLabel(formLayoutWidget);
         StartTimeLabel->setObjectName(QString::fromUtf8("StartTimeLabel"));
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, StartTimeLabel);
+        formLayout->setWidget(2, QFormLayout::LabelRole, StartTimeLabel);
 
         startTimeDateTimeEdit = new QDateTimeEdit(formLayoutWidget);
         startTimeDateTimeEdit->setObjectName(QString::fromUtf8("startTimeDateTimeEdit"));
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, startTimeDateTimeEdit);
+        formLayout->setWidget(2, QFormLayout::FieldRole, startTimeDateTimeEdit);
 
         endTimeLabel = new QLabel(formLayoutWidget);
         endTimeLabel->setObjectName(QString::fromUtf8("endTimeLabel"));
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, endTimeLabel);
+        formLayout->setWidget(3, QFormLayout::LabelRole, endTimeLabel);
 
         endTimeDateTimeEdit = new QDateTimeEdit(formLayoutWidget);
         endTimeDateTimeEdit->setObjectName(QString::fromUtf8("endTimeDateTimeEdit"));
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, endTimeDateTimeEdit);
+        formLayout->setWidget(3, QFormLayout::FieldRole, endTimeDateTimeEdit);
+
+        roomLabel = new QLabel(formLayoutWidget);
+        roomLabel->setObjectName(QString::fromUtf8("roomLabel"));
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, roomLabel);
+
+        roomLineEdit = new QLineEdit(formLayoutWidget);
+        roomLineEdit->setObjectName(QString::fromUtf8("roomLineEdit"));
+
+        formLayout->setWidget(1, QFormLayout::FieldRole, roomLineEdit);
 
         horizontalLayoutWidget_2 = new QWidget(AddEventView);
         horizontalLayoutWidget_2->setObjectName(QString::fromUtf8("horizontalLayoutWidget_2"));
@@ -110,6 +122,11 @@ public:
 
         horizontalLayout_2->addWidget(AddEventLabel);
 
+        QWidget::setTabOrder(nameLineEdit, roomLineEdit);
+        QWidget::setTabOrder(roomLineEdit, startTimeDateTimeEdit);
+        QWidget::setTabOrder(startTimeDateTimeEdit, endTimeDateTimeEdit);
+        QWidget::setTabOrder(endTimeDateTimeEdit, AddEventButton);
+        QWidget::setTabOrder(AddEventButton, CancelButton);
 
         retranslateUi(AddEventView);
 
@@ -124,6 +141,7 @@ public:
         nameLabel->setText(QApplication::translate("AddEventView", "Name: ", nullptr));
         StartTimeLabel->setText(QApplication::translate("AddEventView", "Start Time: ", nullptr));
         endTimeLabel->setText(QApplication::translate("AddEventView", "End Time: ", nullptr));
+        roomLabel->setText(QApplication::translate("AddEventView", "Room", nullptr));
         AddEventLabel->setText(QApplication::translate("AddEventView", "Event Infomation", nullptr));
     } // retranslateUi
 

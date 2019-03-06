@@ -2,6 +2,7 @@
 #define ADDEVENTVIEW_H
 
 #include <QDialog>
+#include "eventinformation.h"
 
 namespace Ui {
 class AddEventView;
@@ -19,6 +20,9 @@ private slots:
     void on_AddEventButton_clicked();
 
     void on_CancelButton_clicked();
+
+signals:
+    void newEventCreated(EventInformation newEvent);
 
 private:
     Ui::AddEventView *ui;

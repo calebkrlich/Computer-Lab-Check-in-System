@@ -4,8 +4,7 @@
 #include <QDialog>
 #include "cardparser.h"
 #include "checkimanualview.h"
-
-
+#include "studentinformation.h"
 
 namespace Ui {
 class CheckInView;
@@ -24,13 +23,14 @@ private:
     CheckIManualView *checkInManualView;
 
 signals:
-    void studentCheckedIn(CardInfo card);
+    void studentCheckedIn(StudentInformation student);
 
 
 private slots:
     void on_CheckInButton_clicked();
     void on_CancelButton_clicked();
     void on_ManualCheckInButton_clicked();
+
 
 
 };

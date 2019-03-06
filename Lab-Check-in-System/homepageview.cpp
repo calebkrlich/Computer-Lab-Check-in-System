@@ -65,6 +65,8 @@ void HomePageView::on_AddEventButton_clicked()
     addEventView = new AddEventView();
     addEventView->show();
 
+   QObject::connect(addEventView, &AddEventView::newEventCreated, this, &HomePageView::newEventToAdd);
+
 }
 
 //Testing function for show functionally of signed in student layout
@@ -81,4 +83,18 @@ void HomePageView::on_AddSignedInButton_clicked()
     valuesToAdd.append(newStudent.lastName);
 
     TableOperators::addRow(ui->SignedInTable,valuesToAdd);
+
+    studentsCheckedIn = ui->SignedInTable->rowCount();      //Fetch the row count for signaling
+}
+
+void HomePageView::newEventToAdd(EventInformation event)
+{
+    QList<QString> rowToAdd;
+
+    rowToAdd.append(event.name);
+    rowToAdd.append(event.room);
+    rowToAdd.append(event.startDateTime.toString());
+    rowToAdd.append(event.endDateTime.toString());
+
+    TableOperators::addRow(ui->EventTable,rowToAdd);
 }

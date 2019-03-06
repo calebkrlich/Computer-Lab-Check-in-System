@@ -36,7 +36,6 @@ void CheckInView::on_CheckInButton_clicked()
                           parsedCardInfo.firstName,
                           parsedCardInfo.lastName))
         {
-
             QMessageBox conformationBox;                    //Creates a notification popup for user
             conformationBox.setText("Student signed-in");
             conformationBox.exec();
@@ -66,3 +65,4 @@ void CheckInView::on_ManualCheckInButton_clicked()
     checkInManualView = new CheckIManualView(this);
     checkInManualView->show();
 }
+

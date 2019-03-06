@@ -6,6 +6,8 @@
 #include "checkimanualview.h"
 #include "checkoutview.h"
 #include "addeventview.h"
+#include "eventinformation.h"
+#include "studentinformation.h"
 
 namespace Ui {
 class HomePageView;
@@ -31,6 +33,9 @@ private slots:
 
     void on_AddSignedInButton_clicked();
 
+    void newEventToAdd(EventInformation event);     //Creates a new row in event table when add event is called
+
+    void newStudentToAdd(StudentInformation student);
 private:
     Ui::HomePageView *ui;
     CheckInView *checkInView;

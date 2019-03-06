@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1062</width>
-    <height>524</height>
+    <width>1142</width>
+    <height>570</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -170,7 +170,7 @@
      <rect>
       <x>650</x>
       <y>100</y>
-      <width>401</width>
+      <width>471</width>
       <height>371</height>
      </rect>
     </property>
@@ -182,7 +182,7 @@
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>381</width>
+       <width>451</width>
        <height>331</height>
       </rect>
      </property>
@@ -193,7 +193,12 @@
      </column>
      <column>
       <property name="text">
-       <string>New Column</string>
+       <string>Room</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Start Time</string>
       </property>
      </column>
      <column>
@@ -231,7 +236,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1062</width>
+     <width>1142</width>
      <height>20</height>
     </rect>
    </property>

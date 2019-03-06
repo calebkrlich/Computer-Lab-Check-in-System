@@ -44,7 +44,8 @@ HEADERS += \
     databasecontroller.h \
     studentinformation.h \
     tablemethods.h \
-    addeventview.h
+    addeventview.h \
+    eventinformation.h
 
 FORMS += \
     checkinview.ui \

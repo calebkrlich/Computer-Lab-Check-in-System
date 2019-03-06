@@ -58,7 +58,7 @@ public:
     {
         if (HomePageView->objectName().isEmpty())
             HomePageView->setObjectName(QString::fromUtf8("HomePageView"));
-        HomePageView->resize(1062, 524);
+        HomePageView->resize(1142, 570);
         HomePageView->setMaximumSize(QSize(16777215, 16777215));
         HomePageView->setAnimated(true);
         actionClass_Schedule = new QAction(HomePageView);
@@ -140,18 +140,20 @@ public:
 
         EventsGroupBox = new QGroupBox(centralwidget);
         EventsGroupBox->setObjectName(QString::fromUtf8("EventsGroupBox"));
-        EventsGroupBox->setGeometry(QRect(650, 100, 401, 371));
+        EventsGroupBox->setGeometry(QRect(650, 100, 471, 371));
         EventTable = new QTableWidget(EventsGroupBox);
-        if (EventTable->columnCount() < 3)
-            EventTable->setColumnCount(3);
+        if (EventTable->columnCount() < 4)
+            EventTable->setColumnCount(4);
         QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
         EventTable->setHorizontalHeaderItem(0, __qtablewidgetitem4);
         QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
         EventTable->setHorizontalHeaderItem(1, __qtablewidgetitem5);
         QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
         EventTable->setHorizontalHeaderItem(2, __qtablewidgetitem6);
+        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
+        EventTable->setHorizontalHeaderItem(3, __qtablewidgetitem7);
         EventTable->setObjectName(QString::fromUtf8("EventTable"));
-        EventTable->setGeometry(QRect(10, 30, 381, 331));
+        EventTable->setGeometry(QRect(10, 30, 451, 331));
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(10, 10, 251, 81));
@@ -162,7 +164,7 @@ public:
         HomePageView->setCentralWidget(centralwidget);
         menubar = new QMenuBar(HomePageView);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1062, 20));
+        menubar->setGeometry(QRect(0, 0, 1142, 20));
         menuLab_Check_in_System = new QMenu(menubar);
         menuLab_Check_in_System->setObjectName(QString::fromUtf8("menuLab_Check_in_System"));
         menuEdit = new QMenu(menubar);
@@ -215,9 +217,11 @@ public:
         QTableWidgetItem *___qtablewidgetitem4 = EventTable->horizontalHeaderItem(0);
         ___qtablewidgetitem4->setText(QApplication::translate("HomePageView", "Name", nullptr));
         QTableWidgetItem *___qtablewidgetitem5 = EventTable->horizontalHeaderItem(1);
-        ___qtablewidgetitem5->setText(QApplication::translate("HomePageView", "New Column", nullptr));
+        ___qtablewidgetitem5->setText(QApplication::translate("HomePageView", "Room", nullptr));
         QTableWidgetItem *___qtablewidgetitem6 = EventTable->horizontalHeaderItem(2);
-        ___qtablewidgetitem6->setText(QApplication::translate("HomePageView", "End Time", nullptr));
+        ___qtablewidgetitem6->setText(QApplication::translate("HomePageView", "Start Time", nullptr));
+        QTableWidgetItem *___qtablewidgetitem7 = EventTable->horizontalHeaderItem(3);
+        ___qtablewidgetitem7->setText(QApplication::translate("HomePageView", "End Time", nullptr));
         menuLab_Check_in_System->setTitle(QApplication::translate("HomePageView", "File", nullptr));
         menuEdit->setTitle(QApplication::translate("HomePageView", "Edit", nullptr));
         menuView->setTitle(QApplication::translate("HomePageView", "View", nullptr));
