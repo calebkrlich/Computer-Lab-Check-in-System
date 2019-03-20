@@ -23,9 +23,9 @@ void AddEventView::on_AddEventButton_clicked()
     eventToSignal.startDateTime = ui->startTimeDateTimeEdit->dateTime();    //fetch the start time
     eventToSignal.endDateTime = ui->endTimeDateTimeEdit->dateTime();        //fetch the end time
 
-    emit(newEventCreated(eventToSignal));                             //Emit to the homepage object
+    emit(newEventCreated(eventToSignal));                                   //Emit to the homepage object
 
-    this->close();  //close the window after event added
+    this->close();                                                          //close the window after event added
 }
 
 void AddEventView::on_CancelButton_clicked()

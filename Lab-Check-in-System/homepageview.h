@@ -31,8 +31,6 @@ private slots:
 
     void on_AddEventButton_clicked();
 
-    void on_AddSignedInButton_clicked();
-
     void newEventToAdd(EventInformation event);     //Creates a new row in event table when add event is called
 
     void newStudentToAdd(StudentInformation student);

@@ -36,6 +36,13 @@ void CheckInView::on_CheckInButton_clicked()
                           parsedCardInfo.firstName,
                           parsedCardInfo.lastName))
         {
+            StudentInformation studentInfoToEmit;
+            studentInfoToEmit.ID = parsedCardInfo.ID;
+            studentInfoToEmit.firstName = parsedCardInfo.firstName;
+            studentInfoToEmit.lastName = parsedCardInfo.lastName;
+
+            emit(EventStudentCheckedIn(studentInfoToEmit)); //emit signal to update homepage UI
+
             QMessageBox conformationBox;                    //Creates a notification popup for user
             conformationBox.setText("Student signed-in");
             conformationBox.exec();

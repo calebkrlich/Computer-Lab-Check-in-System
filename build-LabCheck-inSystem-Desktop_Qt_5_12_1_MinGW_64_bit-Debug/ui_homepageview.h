@@ -40,14 +40,12 @@ public:
     QGroupBox *groupBox_2;
     QWidget *verticalLayoutWidget;
     QGridLayout *gridLayout;
+    QPushButton *AddEventButton;
     QPushButton *RemoveEventButton;
     QPushButton *CheckOutButton;
-    QPushButton *AddEventButton;
     QPushButton *CheckInButton;
-    QPushButton *AddSignedInButton;
     QGroupBox *EventsGroupBox;
     QTableWidget *EventTable;
-    QLabel *label;
     QMenuBar *menubar;
     QMenu *menuLab_Check_in_System;
     QMenu *menuEdit;
@@ -74,7 +72,7 @@ public:
         centralwidget->setMaximumSize(QSize(16777215, 507));
         CheckInOptionsLabel = new QLabel(centralwidget);
         CheckInOptionsLabel->setObjectName(QString::fromUtf8("CheckInOptionsLabel"));
-        CheckInOptionsLabel->setGeometry(QRect(280, 30, 261, 31));
+        CheckInOptionsLabel->setGeometry(QRect(10, 10, 261, 31));
         QFont font;
         font.setPointSize(18);
         font.setBold(false);
@@ -106,6 +104,11 @@ public:
         gridLayout = new QGridLayout(verticalLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
+        AddEventButton = new QPushButton(verticalLayoutWidget);
+        AddEventButton->setObjectName(QString::fromUtf8("AddEventButton"));
+
+        gridLayout->addWidget(AddEventButton, 1, 0, 1, 1);
+
         RemoveEventButton = new QPushButton(verticalLayoutWidget);
         RemoveEventButton->setObjectName(QString::fromUtf8("RemoveEventButton"));
 
@@ -121,22 +124,12 @@ public:
 
         gridLayout->addWidget(CheckOutButton, 0, 1, 1, 1);
 
-        AddEventButton = new QPushButton(verticalLayoutWidget);
-        AddEventButton->setObjectName(QString::fromUtf8("AddEventButton"));
-
-        gridLayout->addWidget(AddEventButton, 1, 0, 1, 1);
-
         CheckInButton = new QPushButton(verticalLayoutWidget);
         CheckInButton->setObjectName(QString::fromUtf8("CheckInButton"));
         sizePolicy.setHeightForWidth(CheckInButton->sizePolicy().hasHeightForWidth());
         CheckInButton->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(CheckInButton, 0, 0, 1, 1);
-
-        AddSignedInButton = new QPushButton(verticalLayoutWidget);
-        AddSignedInButton->setObjectName(QString::fromUtf8("AddSignedInButton"));
-
-        gridLayout->addWidget(AddSignedInButton, 2, 0, 1, 1);
 
         EventsGroupBox = new QGroupBox(centralwidget);
         EventsGroupBox->setObjectName(QString::fromUtf8("EventsGroupBox"));
@@ -154,13 +147,6 @@ public:
         EventTable->setHorizontalHeaderItem(3, __qtablewidgetitem7);
         EventTable->setObjectName(QString::fromUtf8("EventTable"));
         EventTable->setGeometry(QRect(10, 30, 451, 331));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(10, 10, 251, 81));
-        label->setText(QString::fromUtf8(""));
-        label->setTextFormat(Qt::RichText);
-        label->setPixmap(QPixmap(QString::fromUtf8("logo_1.png.jpg")));
-        label->setScaledContents(true);
         HomePageView->setCentralWidget(centralwidget);
         menubar = new QMenuBar(HomePageView);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -208,11 +194,10 @@ public:
         QTableWidgetItem *___qtablewidgetitem3 = SignedInTable->horizontalHeaderItem(3);
         ___qtablewidgetitem3->setText(QApplication::translate("HomePageView", "Signed-in", nullptr));
         groupBox_2->setTitle(QApplication::translate("HomePageView", "Options", nullptr));
+        AddEventButton->setText(QApplication::translate("HomePageView", "Add Event", nullptr));
         RemoveEventButton->setText(QApplication::translate("HomePageView", "Remove Event", nullptr));
         CheckOutButton->setText(QApplication::translate("HomePageView", "Check Out", nullptr));
-        AddEventButton->setText(QApplication::translate("HomePageView", "Add Event", nullptr));
         CheckInButton->setText(QApplication::translate("HomePageView", "Check In", nullptr));
-        AddSignedInButton->setText(QApplication::translate("HomePageView", "Add Signed-In", nullptr));
         EventsGroupBox->setTitle(QApplication::translate("HomePageView", "Events", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = EventTable->horizontalHeaderItem(0);
         ___qtablewidgetitem4->setText(QApplication::translate("HomePageView", "Name", nullptr));

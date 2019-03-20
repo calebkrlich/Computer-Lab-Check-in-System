@@ -6,6 +6,7 @@
 #include "tablemethods.h"
 
 #include <QtSql>
+#include <QDateTime>
 
 HomePageView::HomePageView(QWidget *parent) :
     QMainWindow(parent),
@@ -23,68 +24,29 @@ void HomePageView::on_CheckInButton_clicked()
 {
     checkInView = new CheckInView(this);
     checkInView->show();
+
+    QObject::connect(checkInView,&CheckInView::EventStudentCheckedIn,this,&HomePageView::newStudentToAdd);
 }
 
 void HomePageView::on_CheckOutButton_clicked()
 {
     checkOutView = new CheckOutView(this);
+    QList<QString> fakeList = {"Joe","Doe","Frank"};
+
+    checkOutView->setTotalRows(ui->SignedInTable->rowCount());
+    checkOutView->setStudentsInfomation(fakeList);
+    checkOutView->buildSelectionTable();
     checkOutView->show();
+
+
 }
 
 void HomePageView::on_AddEventButton_clicked()
 {
-
-    /*
-    //create a new database connection
-    DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");
-
-    //open the database
-    db.openDatabase();
-
-    //fetch rows from the database
-    QSqlQuery query = db.getStudentFromID("000001");
-
-    //cycle through the rows
-    while(query.next())
-    {
-        /*
-        int uid = query.value(0).toInt();
-        QString YSU_ID = query.value(1).toString();
-        qDebug() << uid << YSU_ID;
-
-        QList<QString> rowToAdd;
-
-        rowToAdd.append(query.value(0).toString());
-        rowToAdd.append(query.value(1).toString());
-
-        TableOperators::addRow(ui->tableWidget,rowToAdd);
-    }
-
-    */
-
     addEventView = new AddEventView();
     addEventView->show();
 
    QObject::connect(addEventView, &AddEventView::newEventCreated, this, &HomePageView::newEventToAdd);
-
-}
-
-//Testing function for show functionally of signed in student layout
-void HomePageView::on_AddSignedInButton_clicked()
-{
-    StudentInformation newStudent;
-    newStudent.status = "Student";
-    newStudent.firstName = "John";
-    newStudent.lastName = "Doe";
-
-    QList<QString> valuesToAdd;
-
-    valuesToAdd.append(newStudent.firstName);
-    valuesToAdd.append(newStudent.lastName);
-
-    TableOperators::addRow(ui->SignedInTable,valuesToAdd);
-
-    studentsCheckedIn = ui->SignedInTable->rowCount();      //Fetch the row count for signaling
 }
 
 void HomePageView::newEventToAdd(EventInformation event)
@@ -97,4 +59,17 @@ void HomePageView::newEventToAdd(EventInformation event)
     rowToAdd.append(event.endDateTime.toString());
 
     TableOperators::addRow(ui->EventTable,rowToAdd);
+}
+
+void HomePageView::newStudentToAdd(StudentInformation student)
+{
+    QList<QString> rowToAdd;
+    QDateTime timeCheckedIn;
+
+    rowToAdd.append(QString::number(student.ID));
+    rowToAdd.append(student.firstName);
+    rowToAdd.append(student.lastName);
+    rowToAdd.append(timeCheckedIn.currentDateTime().toString());
+
+    TableOperators::addRow(ui->SignedInTable,rowToAdd);
 }

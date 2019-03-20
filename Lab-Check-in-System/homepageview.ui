@@ -32,8 +32,8 @@
    <widget class="QLabel" name="CheckInOptionsLabel">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>30</y>
+      <x>10</x>
+      <y>10</y>
       <width>261</width>
       <height>31</height>
      </rect>
@@ -115,6 +115,13 @@
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="0">
+       <widget class="QPushButton" name="AddEventButton">
+        <property name="text">
+         <string>Add Event</string>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="1">
        <widget class="QPushButton" name="RemoveEventButton">
         <property name="text">
@@ -135,13 +142,6 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="AddEventButton">
-        <property name="text">
-         <string>Add Event</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0">
        <widget class="QPushButton" name="CheckInButton">
         <property name="sizePolicy">
@@ -152,13 +152,6 @@
         </property>
         <property name="text">
          <string>Check In</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="AddSignedInButton">
-        <property name="text">
-         <string>Add Signed-In</string>
         </property>
        </widget>
       </item>
@@ -207,28 +200,6 @@
       </property>
      </column>
     </widget>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>251</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string notr="true"/>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::RichText</enum>
-    </property>
-    <property name="pixmap">
-     <pixmap>logo_1.png.jpg</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

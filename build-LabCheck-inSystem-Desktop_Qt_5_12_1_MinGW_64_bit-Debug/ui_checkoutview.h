@@ -34,7 +34,7 @@ public:
     QLabel *TitleBarLabel;
     QGroupBox *StudentGroupBox;
     QWidget *gridLayoutWidget;
-    QGridLayout *gridLayout;
+    QGridLayout *SelectionGridLayout;
 
     void setupUi(QDialog *CheckOutView)
     {
@@ -86,10 +86,10 @@ public:
         StudentGroupBox->setGeometry(QRect(10, 30, 581, 391));
         gridLayoutWidget = new QWidget(StudentGroupBox);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(10, 20, 561, 361));
-        gridLayout = new QGridLayout(gridLayoutWidget);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
+        gridLayoutWidget->setGeometry(QRect(10, 30, 561, 351));
+        SelectionGridLayout = new QGridLayout(gridLayoutWidget);
+        SelectionGridLayout->setObjectName(QString::fromUtf8("SelectionGridLayout"));
+        SelectionGridLayout->setContentsMargins(0, 0, 0, 0);
 
         retranslateUi(CheckOutView);
 

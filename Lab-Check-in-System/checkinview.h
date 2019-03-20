@@ -23,16 +23,13 @@ private:
     CheckIManualView *checkInManualView;
 
 signals:
-    void studentCheckedIn(StudentInformation student);
+    void EventStudentCheckedIn(StudentInformation student);
 
 
 private slots:
     void on_CheckInButton_clicked();
     void on_CancelButton_clicked();
     void on_ManualCheckInButton_clicked();
-
-
-
 };
 
 #endif // CHECKINVIEW_H

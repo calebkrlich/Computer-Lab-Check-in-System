@@ -96,12 +96,12 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
+      <y>30</y>
       <width>561</width>
-      <height>361</height>
+      <height>351</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout"/>
+    <layout class="QGridLayout" name="SelectionGridLayout"/>
    </widget>
   </widget>
  </widget>
