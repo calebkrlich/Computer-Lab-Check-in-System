@@ -88,8 +88,10 @@ public:
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(10, 30, 561, 351));
         SelectionGridLayout = new QGridLayout(gridLayoutWidget);
+        SelectionGridLayout->setSpacing(0);
         SelectionGridLayout->setObjectName(QString::fromUtf8("SelectionGridLayout"));
-        SelectionGridLayout->setContentsMargins(0, 0, 0, 0);
+        SelectionGridLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        SelectionGridLayout->setContentsMargins(0, 0, 200, 200);
 
         retranslateUi(CheckOutView);
 

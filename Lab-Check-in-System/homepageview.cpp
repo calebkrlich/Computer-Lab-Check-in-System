@@ -31,10 +31,20 @@ void HomePageView::on_CheckInButton_clicked()
 void HomePageView::on_CheckOutButton_clicked()
 {
     checkOutView = new CheckOutView(this);
-    QList<QString> fakeList = {"Joe","Doe","Frank"};
+    QList<StudentInformation> listOfStudents;
+
+    for(int i = 0; i < ui->SignedInTable->rowCount();i++)
+    {
+        StudentInformation tempStudent;
+        tempStudent.ID = ui->SignedInTable->item(i,0)->text().toUInt();
+        tempStudent.firstName = ui->SignedInTable->item(i,1)->text();
+        tempStudent.lastName = ui->SignedInTable->item(i,2)->text();
+
+        listOfStudents.append(tempStudent);
+    }
 
     checkOutView->setTotalRows(ui->SignedInTable->rowCount());
-    checkOutView->setStudentsInfomation(fakeList);
+    checkOutView->setStudentsInfomation(listOfStudents);
     checkOutView->buildSelectionTable();
     checkOutView->show();
 
@@ -72,4 +82,10 @@ void HomePageView::newStudentToAdd(StudentInformation student)
     rowToAdd.append(timeCheckedIn.currentDateTime().toString());
 
     TableOperators::addRow(ui->SignedInTable,rowToAdd);
+}
+
+void HomePageView::StudentToRemove(unsigned int studentID)
+{
+    TableOperators::removeRowWithValue(ui->SignedInTable,QString::number(studentID));   //Delete the student from the row
+    //UPDATE THE LOGS WITH THE EXIT TIME HERE
 }

@@ -7,6 +7,8 @@
 #include <QCheckBox>
 #include <QDebug>
 
+#include "studentinformation.h"
+
 namespace Ui {
 class CheckOutView;
 }
@@ -19,7 +21,7 @@ public:
     explicit CheckOutView(QWidget *parent = nullptr);
 
     void setTotalRows(int amount);
-    void setStudentsInfomation(QList<QString> info);
+    void setStudentsInfomation(QList<StudentInformation> studentsToAdd);
     void buildSelectionTable();
 
     ~CheckOutView();
@@ -29,11 +31,14 @@ private slots:
 
     void on_CheckOutButton_clicked();
 
+signals:
+    void EventStudentCheckOut(unsigned int studentID);
+
 private:
     Ui::CheckOutView *ui;
 
     int totalRows;
-    QList<QString> students;
+    QList<StudentInformation> students;
     QList<QCheckBox*> studentCheckBoxSelections;
 };
 

@@ -36,6 +36,20 @@ namespace TableOperators
         table->removeRow(rowIndex);
         return true;
     }
+
+    bool removeRowWithValue(QTableWidget *table, QString value)
+    {
+        for(int i = 0; i< table->rowCount(); i++)
+        {
+            if(table->itemAt(i,0)->text() == value)
+            {
+                table->removeRow(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
 };
 
 

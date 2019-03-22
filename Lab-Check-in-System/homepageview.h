@@ -34,6 +34,9 @@ private slots:
     void newEventToAdd(EventInformation event);     //Creates a new row in event table when add event is called
 
     void newStudentToAdd(StudentInformation student);
+
+    void StudentToRemove(unsigned int studentID);
+
 private:
     Ui::HomePageView *ui;
     CheckInView *checkInView;
