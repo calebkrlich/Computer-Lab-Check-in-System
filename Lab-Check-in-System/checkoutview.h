@@ -6,6 +6,7 @@
 #include <QString>
 #include <QCheckBox>
 #include <QDebug>
+#include <QMessageBox>
 
 #include "studentinformation.h"
 

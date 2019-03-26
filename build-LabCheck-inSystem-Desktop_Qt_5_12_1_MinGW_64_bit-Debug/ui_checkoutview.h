@@ -35,6 +35,12 @@ public:
     QGroupBox *StudentGroupBox;
     QWidget *gridLayoutWidget;
     QGridLayout *SelectionGridLayout;
+    QWidget *gridLayoutWidget_2;
+    QGridLayout *HeaderGridLayout;
+    QLabel *label_3;
+    QLabel *label_2;
+    QLabel *label;
+    QLabel *label_4;
 
     void setupUi(QDialog *CheckOutView)
     {
@@ -86,12 +92,38 @@ public:
         StudentGroupBox->setGeometry(QRect(10, 30, 581, 391));
         gridLayoutWidget = new QWidget(StudentGroupBox);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(10, 30, 561, 351));
+        gridLayoutWidget->setGeometry(QRect(10, 70, 561, 311));
         SelectionGridLayout = new QGridLayout(gridLayoutWidget);
-        SelectionGridLayout->setSpacing(0);
+        SelectionGridLayout->setSpacing(6);
         SelectionGridLayout->setObjectName(QString::fromUtf8("SelectionGridLayout"));
         SelectionGridLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
-        SelectionGridLayout->setContentsMargins(0, 0, 200, 200);
+        SelectionGridLayout->setContentsMargins(0, 0, 0, 0);
+        gridLayoutWidget_2 = new QWidget(StudentGroupBox);
+        gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
+        gridLayoutWidget_2->setGeometry(QRect(10, 20, 561, 41));
+        HeaderGridLayout = new QGridLayout(gridLayoutWidget_2);
+        HeaderGridLayout->setObjectName(QString::fromUtf8("HeaderGridLayout"));
+        HeaderGridLayout->setContentsMargins(0, 0, 0, 0);
+        label_3 = new QLabel(gridLayoutWidget_2);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        HeaderGridLayout->addWidget(label_3, 0, 2, 1, 1);
+
+        label_2 = new QLabel(gridLayoutWidget_2);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        HeaderGridLayout->addWidget(label_2, 0, 1, 1, 1);
+
+        label = new QLabel(gridLayoutWidget_2);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        HeaderGridLayout->addWidget(label, 0, 0, 1, 1);
+
+        label_4 = new QLabel(gridLayoutWidget_2);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+
+        HeaderGridLayout->addWidget(label_4, 0, 3, 1, 1);
+
 
         retranslateUi(CheckOutView);
 
@@ -105,6 +137,10 @@ public:
         CancelButton->setText(QApplication::translate("CheckOutView", "Cancel", nullptr));
         TitleBarLabel->setText(QApplication::translate("CheckOutView", "Check-out Students", nullptr));
         StudentGroupBox->setTitle(QApplication::translate("CheckOutView", "Signed In", nullptr));
+        label_3->setText(QApplication::translate("CheckOutView", "First Name", nullptr));
+        label_2->setText(QApplication::translate("CheckOutView", "YSU ID #", nullptr));
+        label->setText(QApplication::translate("CheckOutView", "Selection", nullptr));
+        label_4->setText(QApplication::translate("CheckOutView", "Last Name", nullptr));
     } // retranslateUi
 
 };

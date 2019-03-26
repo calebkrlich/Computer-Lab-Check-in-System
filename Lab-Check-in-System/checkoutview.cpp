@@ -31,6 +31,7 @@ void CheckOutView::setStudentsInfomation(QList<StudentInformation> studentsToAdd
 
 void CheckOutView::buildSelectionTable()
 {
+
     for(int i = 0; i < totalRows; i++)
     {
         QCheckBox *newCheckBox = new QCheckBox;                 //create new check boxes for selection
@@ -58,11 +59,33 @@ void CheckOutView::on_CancelButton_clicked()
 
 void CheckOutView::on_CheckOutButton_clicked()
 {
+    QList<StudentInformation> studentsSignedOut;
+
     for(int i = 0; i < totalRows; i++)
     {
         if(studentCheckBoxSelections[i]->isChecked())
         {
-            emit(students[i].ID);
+            studentsSignedOut.append(students[i]);
+
+            qInfo() << students[i].ID;
+            emit(EventStudentCheckOut(students[i].ID));
         }
     }
+
+    QString messageBoxString = "Students Signed Out: \n";
+
+    for(int i = 0; i < studentsSignedOut.count(); i++)
+    {
+        messageBoxString.append(QString::number(studentsSignedOut[i].ID).toLatin1() + ": ");
+        messageBoxString.append(studentsSignedOut[i].firstName + ",");
+        messageBoxString.append(studentsSignedOut[i].lastName + ": ");
+        messageBoxString.append("TIME_SIGNED_OUT \n");
+    }
+
+
+    QMessageBox comformationBox;
+    comformationBox.setText(messageBoxString);
+    comformationBox.setWindowTitle("");
+    comformationBox.exec();
+    this->close();
 }

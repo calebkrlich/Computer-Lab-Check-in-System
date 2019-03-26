@@ -48,6 +48,8 @@ void HomePageView::on_CheckOutButton_clicked()
     checkOutView->buildSelectionTable();
     checkOutView->show();
 
+    QObject::connect(checkOutView, &CheckOutView::EventStudentCheckOut,this, &HomePageView::StudentToRemove);
+
 
 }
 
@@ -82,6 +84,8 @@ void HomePageView::newStudentToAdd(StudentInformation student)
     rowToAdd.append(timeCheckedIn.currentDateTime().toString());
 
     TableOperators::addRow(ui->SignedInTable,rowToAdd);
+
+    //Add a new row to logs file
 }
 
 void HomePageView::StudentToRemove(unsigned int studentID)

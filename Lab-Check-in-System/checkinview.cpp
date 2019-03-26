@@ -25,7 +25,6 @@ void CheckInView::on_CheckInButton_clicked()
 
     if(validCard)
     {
-
         DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");           //This needs to be it's own class
         db.openDatabase();
 
@@ -40,6 +39,8 @@ void CheckInView::on_CheckInButton_clicked()
             studentInfoToEmit.ID = parsedCardInfo.ID;
             studentInfoToEmit.firstName = parsedCardInfo.firstName;
             studentInfoToEmit.lastName = parsedCardInfo.lastName;
+            studentInfoToEmit.birthday = parsedCardInfo.birthday;
+            studentInfoToEmit.middleInitial = parsedCardInfo.middleInitial;
 
             emit(EventStudentCheckedIn(studentInfoToEmit)); //emit signal to update homepage UI
 
