@@ -26,11 +26,11 @@ void CheckInView::on_CheckInButton_clicked()
     if(validCard)
     {
         DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");           //This needs to be it's own class
-        db.openDatabase();
+        qInfo() << db.openDatabase();
 
         int uid = db.getRowCount("students") + 1;   //create a unique id from the last row's id
 
-        if(db.postStudent(uid,
+        if(db.postStudent(parsedCardInfo.ID,
                           QString::number(parsedCardInfo.ID),
                           parsedCardInfo.firstName,
                           parsedCardInfo.lastName))

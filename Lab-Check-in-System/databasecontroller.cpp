@@ -30,6 +30,17 @@ int DatabaseController::getRowCount(QString table)
    return queryToReturn.value(0).toInt();   //convert the returned string to int
 }
 
+QSqlQuery DatabaseController::getStudentFromID(QString ID)
+{
+    QString queryString;
+    QSqlQuery queryToReturn;
+
+    queryString = ("select * from students where YSU_ID = " + ID.toLatin1());
+
+    queryToReturn.exec(queryString.toLatin1());
+    return queryToReturn;
+}
+
 //fetches a specific log based off of uid
 QSqlQuery DatabaseController::getLog(QString UID)
 {
@@ -59,13 +70,19 @@ bool DatabaseController::postStudent(int UID, QString YSUID, QString firstName, 
     return queryToExecute.exec(queryString.toLatin1());
 }
 
-QSqlQuery DatabaseController::getStudentFromID(QString ID)
+
+/*
+ * FINSH THE POSTING AND UPDATING LOGS FUNCTIONS
+ *
+*/
+bool DatabaseController::postLog(int UID, QString YSUID, QDateTime signInTime)
 {
     QString queryString;
-    QSqlQuery queryToReturn;
+    QSqlQuery queryToExecute;
 
-    queryString = ("select * from students where YSU_ID = " + ID.toLatin1());
-
-    queryToReturn.exec(queryString.toLatin1());
-    return queryToReturn;
+    queryString = ("INSERT into logs (UID,YSU_ID,TIME_CHECK_IN) VALUES(" +
+                  QString::number(UID) + "," + "'" +
+                   YSUID.toLatin1() + "','" +
+                   signInTime.toString());
+    return
 }
