@@ -14,6 +14,13 @@ CheckInView::~CheckInView()
     delete ui;
 }
 
+/*
+ * Function: Fetches the lineEdit with the swiped card data,
+ *           checks to see if card is valid,
+ *              IF VALID CARD: check to see if the student that is being check in is a new student
+ *                  IF NEW STUDENT: insert student into the students table
+ *
+ */
 void CheckInView::on_CheckInButton_clicked()
 {
     QString cardText = ui->CardInputLineEdit->text();

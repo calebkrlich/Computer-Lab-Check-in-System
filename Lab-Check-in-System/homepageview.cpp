@@ -20,6 +20,11 @@ HomePageView::~HomePageView()
     delete ui;
 }
 
+/*
+ * Function: creates the check in window for the user to swipe their
+ *           id card to sign in; connects this window to newly created
+ *           checkin window
+ */
 void HomePageView::on_CheckInButton_clicked()
 {
     checkInView = new CheckInView(this);
@@ -28,6 +33,11 @@ void HomePageView::on_CheckInButton_clicked()
     QObject::connect(checkInView,&CheckInView::EventStudentCheckedIn,this,&HomePageView::newStudentToAdd);
 }
 
+/*
+ * Function: Create the checkout view for the user to interact by
+ *           passing all student info from the student signed-in table
+ *           and then connecting the new window to this page
+ */
 void HomePageView::on_CheckOutButton_clicked()
 {
     checkOutView = new CheckOutView(this);
@@ -58,6 +68,11 @@ void HomePageView::on_CheckOutButton_clicked()
     QObject::connect(checkOutView, &CheckOutView::EventStudentCheckOut,this, &HomePageView::StudentToRemove);
 }
 
+/*
+ * Function: Creates the event creation window and connects
+ *          this view to the newly created event window
+ * PARAMS: NULL
+ */
 void HomePageView::on_AddEventButton_clicked()
 {
     addEventView = new AddEventView();
@@ -66,6 +81,10 @@ void HomePageView::on_AddEventButton_clicked()
    QObject::connect(addEventView, &AddEventView::newEventCreated, this, &HomePageView::newEventToAdd);
 }
 
+/*
+ * Function: Adds a new event to the event table
+ * PARAMS: event; an event with valid information
+ */
 void HomePageView::newEventToAdd(EventInformation event)
 {
     QList<QString> rowToAdd;
@@ -78,6 +97,12 @@ void HomePageView::newEventToAdd(EventInformation event)
     TableOperators::addRow(ui->EventTable,rowToAdd);
 }
 
+/*
+ * Function: Adds a new student to the signed in table with
+ *           the specified infomation
+ * PARAMS: student; Object that contains all valid information about
+ *                  the student that needs to be signed in
+ */
 void HomePageView::newStudentToAdd(StudentInformation student)
 {
     QList<QString> rowToAdd;
@@ -89,12 +114,13 @@ void HomePageView::newStudentToAdd(StudentInformation student)
     rowToAdd.append(timeCheckedIn.currentDateTime().toString());
 
     TableOperators::addRow(ui->SignedInTable,rowToAdd);
-
-    //Add a new row to logs file
 }
 
+/*
+ * Function: Removes student from sign-in table with the id specified
+ * PARAMS: studentID: id of student to remove
+ */
 void HomePageView::StudentToRemove(unsigned int studentID)
 {
     TableOperators::removeRowWithValue(ui->SignedInTable,QString::number(studentID));   //Delete the student from the row
-    //UPDATE THE LOGS WITH THE EXIT TIME HERE
 }

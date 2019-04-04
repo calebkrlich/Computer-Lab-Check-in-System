@@ -165,8 +165,6 @@ public:
         menubar->addAction(menuLab_Check_in_System->menuAction());
         menubar->addAction(menuEdit->menuAction());
         menubar->addAction(menuView->menuAction());
-        menuEdit->addAction(actionAdd_New_Class);
-        menuEdit->addAction(actionRemove_Class);
         menuEdit->addSeparator();
         menuView->addAction(actionClass_Schedule);
         menuView->addAction(actionChecked_In_Students);

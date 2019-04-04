@@ -220,8 +220,6 @@
     <property name="title">
      <string>Edit</string>
     </property>
-    <addaction name="actionAdd_New_Class"/>
-    <addaction name="actionRemove_Class"/>
     <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuView">

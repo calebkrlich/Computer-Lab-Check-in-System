@@ -1,6 +1,15 @@
 #include "databasecontroller.h"
 #include <QDebug>
 
+
+/*
+ * Function: CONSTRUCTOR; sets up all properties of the database connection
+ *
+ * PARAMS:  databaseType; database systems being used (MYSQL, PostGres, SQLLite, etc), for loading drivers
+ *          hostName; the address of database (localhost, 255.255.255, etc.)
+ *          databaseName; Schema you are trying to access
+ *          userName/password; Credentials to access the database
+ */
 DatabaseController::DatabaseController(QString databaseType, QString hostName, QString databaseName, QString userName, QString password)
 {
     database = QSqlDatabase::addDatabase(databaseType);
@@ -11,11 +20,21 @@ DatabaseController::DatabaseController(QString databaseType, QString hostName, Q
     database.open();
 }
 
+/*
+ * Function: Opens the database connection
+ */
 bool DatabaseController::openDatabase()
 {
     return database.open();
 }
 
+/*
+ * Function: fetchs the total number of rows from the table
+ *           specified in the database
+ *
+ * PARAMS: table; Name of the table in the database
+ * RETURNS: total number of rows
+ */
 int DatabaseController::getRowCount(QString table)
 {
    QString queryString;
@@ -30,6 +49,14 @@ int DatabaseController::getRowCount(QString table)
    return queryToReturn.value(0).toInt();   //convert the returned string to int
 }
 
+
+/*
+ * Function: fetches row from the student table from the ID specified
+ *
+ * PARAMS: ID; id of student attempting to be fetched
+ *
+ * RETURNS: QSQLQUERY; the results from the attempted fetch
+ */
 QSqlQuery DatabaseController::getStudentFromID(QString ID)
 {
     QString queryString;
@@ -41,7 +68,11 @@ QSqlQuery DatabaseController::getStudentFromID(QString ID)
     return queryToReturn;
 }
 
-//fetches a specific log based off of uid
+/*
+ * Function: fetches a log with the UID value specified
+ * PARAMS: UID; Unique identifier to look for
+ * RETURNS: QSqlQuery; the results from the attempted fetch
+ */
 QSqlQuery DatabaseController::getLog(QString UID)
 {
     QString queryString;
@@ -54,6 +85,14 @@ QSqlQuery DatabaseController::getLog(QString UID)
     return queryToReturn;
 }
 
+/*
+ * Function: Inserts a new student into the student table with the specifed information
+ * PARAMS: YSUID; id of student
+ *         firstName; student's firstname
+ *         lastName; student's lastname
+ *
+ * RETURNS: BOOLEAN; if insert was sucessful
+ */
 bool DatabaseController::postStudent(QString YSUID, QString firstName, QString lastName)
 {
     QString queryString;
@@ -70,6 +109,15 @@ bool DatabaseController::postStudent(QString YSUID, QString firstName, QString l
     return queryToExecute.exec(queryString.toLatin1());
 }
 
+/*
+ * Function: Inserts a new log in the logs table with specifed values
+ *
+ * PARAMS: UID; unique identifier for the log
+ *         YSUID; student's id number
+ *         signInTime; time the student signed in
+ *
+ * RETURNS: BOOLEAN; if insert was sucessful
+ */
 bool DatabaseController::postLog(int UID, QString YSUID, QDateTime signInTime)
 {
     QString queryString;
@@ -85,8 +133,17 @@ bool DatabaseController::postLog(int UID, QString YSUID, QDateTime signInTime)
     return queryToExecute.exec(queryString.toLatin1());
 }
 
-//This needs changed, must get time signed in from signout table
-//It must be updated
+/*
+ * Function: updates the row in the log file where the YSUID and signin-time match
+ *           parameters passed
+ *
+ * PARAMS: YSUID; id of student in log to update
+ *         signInTime; time of student signed in
+ *
+ *         signOutTime; time that student signed out
+ *
+ * RETURN: if the update was sucessful
+ */
 bool DatabaseController::updateLog(QString YSUID, QDateTime signInTime, QDateTime signOutTime)
 {
     QString queryString;

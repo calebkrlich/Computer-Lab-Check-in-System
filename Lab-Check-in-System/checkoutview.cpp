@@ -13,25 +13,34 @@ CheckOutView::~CheckOutView()
     delete ui;
 }
 
+
+/*
+ * Function: Sets the number of rows that need to be displayed
+ * PARAMS: amount; number of rows
+ */
 void CheckOutView::setTotalRows(int amount)
 {
     qInfo()<<"WFK";
 
     totalRows = amount;
 }
-
+/*
+ * Function: sets the students that are going to be displayed for signing out
+ *
+ * PARAMS: studentsToAdd; list of students and their corresponding information that are
+ *                          elegiable for signing out
+ */
 void CheckOutView::setStudentsInfomation(QList<StudentInformation> studentsToAdd)
 {
     qInfo()<<"IDK";
     students = studentsToAdd;
 }
 
-/*
- *TODO:
- * -Add infomation about the student (ID,FirstName,LastName)
- * -relay that infomation back to homepage view
- */
 
+/*
+ * Function: Builds and inserts the UI elements for users to select to signout students
+ *
+ */
 void CheckOutView::buildSelectionTable()
 {
     for(int i = 0; i < totalRows; i++)
@@ -68,11 +77,20 @@ void CheckOutView::buildSelectionTable()
     }
 }
 
+/*
+ * Function: Closes the window
+ */
 void CheckOutView::on_CancelButton_clicked()
 {
     this->close();
 }
 
+/*
+ * Function: Signs out the students with their corresponding checkbox selected and
+ *           updates the log file that matches the selected ID and Time they signed in,
+ *           opens a message box, showing students that were signed out,
+ *           and then closes the window
+ */
 void CheckOutView::on_CheckOutButton_clicked()
 {
     QList<StudentInformation> studentsSignedOut;
@@ -103,7 +121,6 @@ void CheckOutView::on_CheckOutButton_clicked()
         messageBoxString.append(studentsSignedOut[i].lastName + ": ");
         messageBoxString.append(QDateTime::currentDateTime().toString());
     }
-
 
     QMessageBox comformationBox;
     comformationBox.setText(messageBoxString);
