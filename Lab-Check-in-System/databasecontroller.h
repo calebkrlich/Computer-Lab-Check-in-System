@@ -27,8 +27,7 @@ public:
    //Fetches student from the their YSUID
    QSqlQuery getStudentFromID(QString YSUID);
 
-   bool postStudent(int UID,
-                    QString YSUID,
+   bool postStudent(QString YSUID,
                     QString firstName,
                     QString lastName);
 
@@ -42,8 +41,7 @@ public:
                 QDateTime signInTime);
 
    //Updates the log when the student signs out
-   bool updateLog(int UID,
-                  QString YSUID,
+   bool updateLog(QString YSUID,
                   QDateTime signInTime,
                   QDateTime signOutTime);
 

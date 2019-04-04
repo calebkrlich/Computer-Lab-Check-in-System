@@ -37,10 +37,11 @@ public:
     QGridLayout *SelectionGridLayout;
     QWidget *gridLayoutWidget_2;
     QGridLayout *HeaderGridLayout;
-    QLabel *label_3;
     QLabel *label_2;
-    QLabel *label;
     QLabel *label_4;
+    QLabel *label;
+    QLabel *label_3;
+    QLabel *label_5;
 
     void setupUi(QDialog *CheckOutView)
     {
@@ -104,25 +105,30 @@ public:
         HeaderGridLayout = new QGridLayout(gridLayoutWidget_2);
         HeaderGridLayout->setObjectName(QString::fromUtf8("HeaderGridLayout"));
         HeaderGridLayout->setContentsMargins(0, 0, 0, 0);
-        label_3 = new QLabel(gridLayoutWidget_2);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-
-        HeaderGridLayout->addWidget(label_3, 0, 2, 1, 1);
-
         label_2 = new QLabel(gridLayoutWidget_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         HeaderGridLayout->addWidget(label_2, 0, 1, 1, 1);
+
+        label_4 = new QLabel(gridLayoutWidget_2);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+
+        HeaderGridLayout->addWidget(label_4, 0, 3, 1, 1);
 
         label = new QLabel(gridLayoutWidget_2);
         label->setObjectName(QString::fromUtf8("label"));
 
         HeaderGridLayout->addWidget(label, 0, 0, 1, 1);
 
-        label_4 = new QLabel(gridLayoutWidget_2);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_3 = new QLabel(gridLayoutWidget_2);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
 
-        HeaderGridLayout->addWidget(label_4, 0, 3, 1, 1);
+        HeaderGridLayout->addWidget(label_3, 0, 2, 1, 1);
+
+        label_5 = new QLabel(gridLayoutWidget_2);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        HeaderGridLayout->addWidget(label_5, 0, 4, 1, 1);
 
 
         retranslateUi(CheckOutView);
@@ -137,10 +143,11 @@ public:
         CancelButton->setText(QApplication::translate("CheckOutView", "Cancel", nullptr));
         TitleBarLabel->setText(QApplication::translate("CheckOutView", "Check-out Students", nullptr));
         StudentGroupBox->setTitle(QApplication::translate("CheckOutView", "Signed In", nullptr));
-        label_3->setText(QApplication::translate("CheckOutView", "First Name", nullptr));
         label_2->setText(QApplication::translate("CheckOutView", "YSU ID #", nullptr));
-        label->setText(QApplication::translate("CheckOutView", "Selection", nullptr));
         label_4->setText(QApplication::translate("CheckOutView", "Last Name", nullptr));
+        label->setText(QApplication::translate("CheckOutView", "Selection", nullptr));
+        label_3->setText(QApplication::translate("CheckOutView", "First Name", nullptr));
+        label_5->setText(QApplication::translate("CheckOutView", "Check In Time", nullptr));
     } // retranslateUi
 
 };

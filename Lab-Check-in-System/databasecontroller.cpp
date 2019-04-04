@@ -54,27 +54,22 @@ QSqlQuery DatabaseController::getLog(QString UID)
     return queryToReturn;
 }
 
-bool DatabaseController::postStudent(int UID, QString YSUID, QString firstName, QString lastName)
+bool DatabaseController::postStudent(QString YSUID, QString firstName, QString lastName)
 {
     QString queryString;
     QSqlQuery queryToExecute;
 
     //gross representation of a query
-    queryString = ("INSERT INTO students (UID,YSU_ID,NAME_FIRST,NAME_LAST) VALUES (" +
-                   QString::number(UID) + "," + "'" +
+    queryString = ("INSERT INTO students (YSU_ID,NAME_FIRST,NAME_LAST) VALUES ('" +
                    YSUID.toLatin1() + "'" + "," + "'" +
                    firstName.toLatin1() + "'" + "," + "'" +
                    lastName.toLatin1() + "'" + ");");
+
     qInfo() << queryString;
 
     return queryToExecute.exec(queryString.toLatin1());
 }
 
-
-/*
- * FINSH THE POSTING AND UPDATING LOGS FUNCTIONS
- *
-*/
 bool DatabaseController::postLog(int UID, QString YSUID, QDateTime signInTime)
 {
     QString queryString;
@@ -83,6 +78,27 @@ bool DatabaseController::postLog(int UID, QString YSUID, QDateTime signInTime)
     queryString = ("INSERT into logs (UID,YSU_ID,TIME_CHECK_IN) VALUES(" +
                   QString::number(UID) + "," + "'" +
                    YSUID.toLatin1() + "','" +
-                   signInTime.toString());
-    return
+                   signInTime.toString("yyyy-MM-dd hh:mm:ss") + "');");
+
+    qInfo() << queryString;
+
+    return queryToExecute.exec(queryString.toLatin1());
+}
+
+//This needs changed, must get time signed in from signout table
+//It must be updated
+bool DatabaseController::updateLog(QString YSUID, QDateTime signInTime, QDateTime signOutTime)
+{
+    QString queryString;
+    QSqlQuery queryToExectue;
+
+    queryString = ("UPDATE logs SET TIME_CHECK_OUT = '" +
+                   signOutTime.toString("yyyy-MM-dd hh:mm:ss")+
+                   "' WHERE YSU_ID = " + YSUID.toLatin1() +
+                   " and TIME_CHECK_IN = '" +
+                   signInTime.toString("yyyy-MM-dd hh:mm:ss") + "';");
+
+    qInfo() << queryString;
+
+    return queryToExectue.exec(queryString.toLatin1());
 }

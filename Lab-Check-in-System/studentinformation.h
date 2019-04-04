@@ -2,6 +2,7 @@
 #define STUDENTINFORMATION_H
 
 #include <QString>
+#include <QDateTime>
 
 struct StudentInformation
 {
@@ -12,6 +13,9 @@ struct StudentInformation
     QString middleInitial;
     QString birthday;
     QString registrationDate;
+
+    QString checkInTime;    //This may want to be changed to QDateTime when I can figure out how to parse the string right :)
+    QString checkOutTime;
 };
 
 #endif // STUDENTINFOMATION_H

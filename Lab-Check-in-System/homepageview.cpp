@@ -35,12 +35,17 @@ void HomePageView::on_CheckOutButton_clicked()
 
     for(int i = 0; i < ui->SignedInTable->rowCount();i++)
     {
+        qInfo() << "I'm gonna lose my mind";
+
         StudentInformation tempStudent;
         tempStudent.ID = ui->SignedInTable->item(i,0)->text().toUInt();
         tempStudent.firstName = ui->SignedInTable->item(i,1)->text();
         tempStudent.lastName = ui->SignedInTable->item(i,2)->text();
+        tempStudent.checkInTime = ui->SignedInTable->item(i,3)->text();
 
+        qInfo() << "This bug is moving";
         listOfStudents.append(tempStudent);
+        qInfo() << "did it get here";
     }
 
     checkOutView->setTotalRows(ui->SignedInTable->rowCount());
@@ -48,9 +53,9 @@ void HomePageView::on_CheckOutButton_clicked()
     checkOutView->buildSelectionTable();
     checkOutView->show();
 
+
+    //pass list of students to the checkout view
     QObject::connect(checkOutView, &CheckOutView::EventStudentCheckOut,this, &HomePageView::StudentToRemove);
-
-
 }
 
 void HomePageView::on_AddEventButton_clicked()

@@ -28,12 +28,26 @@ void CheckInView::on_CheckInButton_clicked()
         DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");           //This needs to be it's own class
         qInfo() << db.openDatabase();
 
-        int uid = db.getRowCount("students") + 1;   //create a unique id from the last row's id
+        //Add student to database if they haven't been added before
+        QSqlQuery result = db.getStudentFromID(QString::number(parsedCardInfo.ID));
+        bool newStudent = true;
 
-        if(db.postStudent(parsedCardInfo.ID,
-                          QString::number(parsedCardInfo.ID),
-                          parsedCardInfo.firstName,
-                          parsedCardInfo.lastName))
+        while(result.next())
+        {
+            qInfo() << result.value(0);
+            newStudent = false;
+        }
+
+        if(newStudent)
+        {
+            qInfo() << "NEW STUDENT";
+            db.postStudent(QString::number(parsedCardInfo.ID),
+                           parsedCardInfo.firstName,
+                           parsedCardInfo.lastName);
+        }
+
+        int uid = db.getRowCount("logs") + 1;   //create a unique id from the last row's id
+        if(db.postLog(uid, QString::number(parsedCardInfo.ID), QDateTime::currentDateTime()))
         {
             StudentInformation studentInfoToEmit;
             studentInfoToEmit.ID = parsedCardInfo.ID;
@@ -41,6 +55,9 @@ void CheckInView::on_CheckInButton_clicked()
             studentInfoToEmit.lastName = parsedCardInfo.lastName;
             studentInfoToEmit.birthday = parsedCardInfo.birthday;
             studentInfoToEmit.middleInitial = parsedCardInfo.middleInitial;
+
+            studentInfoToEmit.checkInTime = "HELP ME"; //Testing weird bug
+            studentInfoToEmit.checkOutTime = "WEAD";
 
             emit(EventStudentCheckedIn(studentInfoToEmit)); //emit signal to update homepage UI
 

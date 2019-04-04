@@ -9,6 +9,7 @@
 #include <QMessageBox>
 
 #include "studentinformation.h"
+#include "databasecontroller.h"
 
 namespace Ui {
 class CheckOutView;
