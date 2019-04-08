@@ -7,6 +7,7 @@ debug/checkimanualview.o
 debug/checkoutview.o
 debug/databasecontroller.o
 debug/addeventview.o
+debug/databasecontrollersingleton.o
 debug/moc_checkinview.o
 debug/moc_homepageview.o
 debug/moc_checkedinview.o

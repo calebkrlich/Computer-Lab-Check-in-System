@@ -55,7 +55,8 @@ SOURCES       = ..\Lab-Check-in-System\main.cpp \
 		..\Lab-Check-in-System\checkimanualview.cpp \
 		..\Lab-Check-in-System\checkoutview.cpp \
 		..\Lab-Check-in-System\databasecontroller.cpp \
-		..\Lab-Check-in-System\addeventview.cpp release\moc_checkinview.cpp \
+		..\Lab-Check-in-System\addeventview.cpp \
+		..\Lab-Check-in-System\databasecontrollersingleton.cpp release\moc_checkinview.cpp \
 		release\moc_homepageview.cpp \
 		release\moc_checkedinview.cpp \
 		release\moc_checkimanualview.cpp \
@@ -70,6 +71,7 @@ OBJECTS       = release/main.o \
 		release/checkoutview.o \
 		release/databasecontroller.o \
 		release/addeventview.o \
+		release/databasecontrollersingleton.o \
 		release/moc_checkinview.o \
 		release/moc_homepageview.o \
 		release/moc_checkedinview.o \
@@ -87,7 +89,8 @@ DIST          = logo_1.png.jpg ..\Lab-Check-in-System\checkinview.h \
 		..\Lab-Check-in-System\studentinformation.h \
 		..\Lab-Check-in-System\tablemethods.h \
 		..\Lab-Check-in-System\addeventview.h \
-		..\Lab-Check-in-System\eventinformation.h ..\Lab-Check-in-System\main.cpp \
+		..\Lab-Check-in-System\eventinformation.h \
+		..\Lab-Check-in-System\databasecontrollersingleton.h ..\Lab-Check-in-System\main.cpp \
 		..\Lab-Check-in-System\checkinview.cpp \
 		..\Lab-Check-in-System\homepageview.cpp \
 		..\Lab-Check-in-System\checkedinview.cpp \
@@ -95,7 +98,8 @@ DIST          = logo_1.png.jpg ..\Lab-Check-in-System\checkinview.h \
 		..\Lab-Check-in-System\checkimanualview.cpp \
 		..\Lab-Check-in-System\checkoutview.cpp \
 		..\Lab-Check-in-System\databasecontroller.cpp \
-		..\Lab-Check-in-System\addeventview.cpp
+		..\Lab-Check-in-System\addeventview.cpp \
+		..\Lab-Check-in-System\databasecontrollersingleton.cpp
 QMAKE_TARGET  = LabCheck-inSystem
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = LabCheck-inSystem.exe
@@ -115,10 +119,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) LabCheck-inSystem.zip $(SOURCES) $(DIST) ..\Lab-Check-in-System\LabCheck-inSystem.pro D:\QT\5.12.1\mingw73_64\mkspecs\features\spec_pre.prf D:\QT\5.12.1\mingw73_64\mkspecs\qdevice.pri D:\QT\5.12.1\mingw73_64\mkspecs\features\device_config.prf D:\QT\5.12.1\mingw73_64\mkspecs\common\sanitize.conf D:\QT\5.12.1\mingw73_64\mkspecs\common\gcc-base.conf D:\QT\5.12.1\mingw73_64\mkspecs\common\g++-base.conf D:\QT\5.12.1\mingw73_64\mkspecs\common\angle.conf D:\QT\5.12.1\mingw73_64\mkspecs\common\windows-vulkan.conf D:\QT\5.12.1\mingw73_64\mkspecs\common\g++-win32.conf D:\QT\5.12.1\mingw73_64\mkspecs\qconfig.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3drender.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axbase.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axserver.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_charts.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_charts_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_core.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_core_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_dbus.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_designer.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_gui.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_help.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_help_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_location.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_location_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_network.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_network_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_networkauth.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_networkauth_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_nfc.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_opengl.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_positioning.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_purchasing.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_purchasing_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qml.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quick.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_repparser.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_script.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_script_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_scripttools.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_scripttools_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_scxml.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_sensors.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_serialport.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_sql.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_svg.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_testlib.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_uitools.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_websockets.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_widgets.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_winextras.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_xml.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\features\qt_functions.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\qt_config.prf D:\QT\5.12.1\mingw73_64\mkspecs\win32-g++\qmake.conf D:\QT\5.12.1\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash D:\QT\5.12.1\mingw73_64\mkspecs\features\exclusive_builds.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\toolchain.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\default_pre.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\win32\default_pre.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\resolve_config.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\exclusive_builds_post.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\default_post.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\build_pass.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\qml_debug.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\precompile_header.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\warn_on.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\qt.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\resources.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\moc.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\win32\opengl.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\uic.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\qmake_use.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\file_copies.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\win32\windows.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\testcase_targets.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\exceptions.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\yacc.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\lex.prf ..\Lab-Check-in-System\LabCheck-inSystem.pro D:\QT\5.12.1\mingw73_64\lib\Qt5Widgets.prl D:\QT\5.12.1\mingw73_64\lib\Qt5Gui.prl D:\QT\5.12.1\mingw73_64\lib\Qt5Sql.prl D:\QT\5.12.1\mingw73_64\lib\Qt5Core.prl D:\QT\5.12.1\mingw73_64\lib\qtmain.prl    D:\QT\5.12.1\mingw73_64\mkspecs\features\data\dummy.cpp ..\Lab-Check-in-System\checkinview.h ..\Lab-Check-in-System\homepageview.h ..\Lab-Check-in-System\checkedinview.h ..\Lab-Check-in-System\cardparser.h ..\Lab-Check-in-System\checkimanualview.h ..\Lab-Check-in-System\checkoutview.h ..\Lab-Check-in-System\databasecontroller.h ..\Lab-Check-in-System\studentinformation.h ..\Lab-Check-in-System\tablemethods.h ..\Lab-Check-in-System\addeventview.h ..\Lab-Check-in-System\eventinformation.h  ..\Lab-Check-in-System\main.cpp ..\Lab-Check-in-System\checkinview.cpp ..\Lab-Check-in-System\homepageview.cpp ..\Lab-Check-in-System\checkedinview.cpp ..\Lab-Check-in-System\cardparser.cpp ..\Lab-Check-in-System\checkimanualview.cpp ..\Lab-Check-in-System\checkoutview.cpp ..\Lab-Check-in-System\databasecontroller.cpp ..\Lab-Check-in-System\addeventview.cpp ..\Lab-Check-in-System\checkinview.ui ..\Lab-Check-in-System\homepageview.ui ..\Lab-Check-in-System\checkedinview.ui ..\Lab-Check-in-System\checkimanualview.ui ..\Lab-Check-in-System\checkoutview.ui ..\Lab-Check-in-System\addeventview.ui    
+	$(ZIP) LabCheck-inSystem.zip $(SOURCES) $(DIST) ..\Lab-Check-in-System\LabCheck-inSystem.pro D:\QT\5.12.1\mingw73_64\mkspecs\features\spec_pre.prf D:\QT\5.12.1\mingw73_64\mkspecs\qdevice.pri D:\QT\5.12.1\mingw73_64\mkspecs\features\device_config.prf D:\QT\5.12.1\mingw73_64\mkspecs\common\sanitize.conf D:\QT\5.12.1\mingw73_64\mkspecs\common\gcc-base.conf D:\QT\5.12.1\mingw73_64\mkspecs\common\g++-base.conf D:\QT\5.12.1\mingw73_64\mkspecs\common\angle.conf D:\QT\5.12.1\mingw73_64\mkspecs\common\windows-vulkan.conf D:\QT\5.12.1\mingw73_64\mkspecs\common\g++-win32.conf D:\QT\5.12.1\mingw73_64\mkspecs\qconfig.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3drender.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axbase.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axserver.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_charts.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_charts_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_core.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_core_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_dbus.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_designer.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_gui.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_help.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_help_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_location.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_location_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_network.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_network_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_networkauth.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_networkauth_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_nfc.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_opengl.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_positioning.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_purchasing.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_purchasing_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qml.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quick.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_repparser.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_script.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_script_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_scripttools.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_scripttools_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_scxml.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_sensors.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_serialport.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_sql.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_svg.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_testlib.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_uitools.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_websockets.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_widgets.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_winextras.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_xml.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\QT\5.12.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\QT\5.12.1\mingw73_64\mkspecs\features\qt_functions.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\qt_config.prf D:\QT\5.12.1\mingw73_64\mkspecs\win32-g++\qmake.conf D:\QT\5.12.1\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash D:\QT\5.12.1\mingw73_64\mkspecs\features\exclusive_builds.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\toolchain.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\default_pre.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\win32\default_pre.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\resolve_config.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\exclusive_builds_post.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\default_post.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\build_pass.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\qml_debug.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\precompile_header.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\warn_on.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\qt.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\resources.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\moc.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\win32\opengl.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\uic.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\qmake_use.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\file_copies.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\win32\windows.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\testcase_targets.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\exceptions.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\yacc.prf D:\QT\5.12.1\mingw73_64\mkspecs\features\lex.prf ..\Lab-Check-in-System\LabCheck-inSystem.pro D:\QT\5.12.1\mingw73_64\lib\Qt5Widgets.prl D:\QT\5.12.1\mingw73_64\lib\Qt5Gui.prl D:\QT\5.12.1\mingw73_64\lib\Qt5Sql.prl D:\QT\5.12.1\mingw73_64\lib\Qt5Core.prl D:\QT\5.12.1\mingw73_64\lib\qtmain.prl    D:\QT\5.12.1\mingw73_64\mkspecs\features\data\dummy.cpp ..\Lab-Check-in-System\checkinview.h ..\Lab-Check-in-System\homepageview.h ..\Lab-Check-in-System\checkedinview.h ..\Lab-Check-in-System\cardparser.h ..\Lab-Check-in-System\checkimanualview.h ..\Lab-Check-in-System\checkoutview.h ..\Lab-Check-in-System\databasecontroller.h ..\Lab-Check-in-System\studentinformation.h ..\Lab-Check-in-System\tablemethods.h ..\Lab-Check-in-System\addeventview.h ..\Lab-Check-in-System\eventinformation.h ..\Lab-Check-in-System\databasecontrollersingleton.h  ..\Lab-Check-in-System\main.cpp ..\Lab-Check-in-System\checkinview.cpp ..\Lab-Check-in-System\homepageview.cpp ..\Lab-Check-in-System\checkedinview.cpp ..\Lab-Check-in-System\cardparser.cpp ..\Lab-Check-in-System\checkimanualview.cpp ..\Lab-Check-in-System\checkoutview.cpp ..\Lab-Check-in-System\databasecontroller.cpp ..\Lab-Check-in-System\addeventview.cpp ..\Lab-Check-in-System\databasecontrollersingleton.cpp ..\Lab-Check-in-System\checkinview.ui ..\Lab-Check-in-System\homepageview.ui ..\Lab-Check-in-System\checkedinview.ui ..\Lab-Check-in-System\checkimanualview.ui ..\Lab-Check-in-System\checkoutview.ui ..\Lab-Check-in-System\addeventview.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.o release\checkinview.o release\homepageview.o release\checkedinview.o release\cardparser.o release\checkimanualview.o release\checkoutview.o release\databasecontroller.o release\addeventview.o release\moc_checkinview.o release\moc_homepageview.o release\moc_checkedinview.o release\moc_checkimanualview.o release\moc_checkoutview.o release\moc_addeventview.o
+	-$(DEL_FILE) release\main.o release\checkinview.o release\homepageview.o release\checkedinview.o release\cardparser.o release\checkimanualview.o release\checkoutview.o release\databasecontroller.o release\addeventview.o release\databasecontrollersingleton.o release\moc_checkinview.o release\moc_homepageview.o release\moc_checkedinview.o release\moc_checkimanualview.o release\moc_checkoutview.o release\moc_addeventview.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -257,6 +261,9 @@ release/moc_checkinview.cpp: ../Lab-Check-in-System/checkinview.h \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QMessageBox \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qmessagebox.h \
 		../Lab-Check-in-System/checkimanualview.h \
+		../Lab-Check-in-System/studentinformation.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QDateTime \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qdatetime.h \
 		release/moc_predefs.h \
 		D:/QT/5.12.1/mingw73_64/bin/moc.exe
 	D:\QT\5.12.1\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/krlic/Documents/GitHub/Computer-Lab-Check-in-System/build-LabCheck-inSystem-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/release/moc_predefs.h -ID:/QT/5.12.1/mingw73_64/mkspecs/win32-g++ -IC:/Users/krlic/Documents/GitHub/Computer-Lab-Check-in-System/Lab-Check-in-System -ID:/QT/5.12.1/mingw73_64/include -ID:/QT/5.12.1/mingw73_64/include/QtWidgets -ID:/QT/5.12.1/mingw73_64/include/QtGui -ID:/QT/5.12.1/mingw73_64/include/QtANGLE -ID:/QT/5.12.1/mingw73_64/include/QtSql -ID:/QT/5.12.1/mingw73_64/include/QtCore -I. -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Lab-Check-in-System\checkinview.h -o release\moc_checkinview.cpp
@@ -377,11 +384,24 @@ release/moc_homepageview.cpp: ../Lab-Check-in-System/homepageview.h \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QMessageBox \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qmessagebox.h \
 		../Lab-Check-in-System/checkimanualview.h \
-		../Lab-Check-in-System/checkoutview.h \
-		../Lab-Check-in-System/addeventview.h \
-		../Lab-Check-in-System/eventinformation.h \
+		../Lab-Check-in-System/studentinformation.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/QDateTime \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qdatetime.h \
+		../Lab-Check-in-System/checkoutview.h \
+		D:/QT/5.12.1/mingw73_64/include/QtGui/QList \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QCheckBox \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qcheckbox.h \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../Lab-Check-in-System/databasecontroller.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSql \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsqlglobal.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsql-config.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlDatabase \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqldatabase.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlQuery \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqlquery.h \
+		../Lab-Check-in-System/addeventview.h \
+		../Lab-Check-in-System/eventinformation.h \
 		release/moc_predefs.h \
 		D:/QT/5.12.1/mingw73_64/bin/moc.exe
 	D:\QT\5.12.1\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/krlic/Documents/GitHub/Computer-Lab-Check-in-System/build-LabCheck-inSystem-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/release/moc_predefs.h -ID:/QT/5.12.1/mingw73_64/mkspecs/win32-g++ -IC:/Users/krlic/Documents/GitHub/Computer-Lab-Check-in-System/Lab-Check-in-System -ID:/QT/5.12.1/mingw73_64/include -ID:/QT/5.12.1/mingw73_64/include/QtWidgets -ID:/QT/5.12.1/mingw73_64/include/QtGui -ID:/QT/5.12.1/mingw73_64/include/QtANGLE -ID:/QT/5.12.1/mingw73_64/include/QtSql -ID:/QT/5.12.1/mingw73_64/include/QtCore -I. -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Lab-Check-in-System\homepageview.h -o release\moc_homepageview.cpp
@@ -709,6 +729,26 @@ release/moc_checkoutview.cpp: ../Lab-Check-in-System/checkoutview.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qfiledevice.h \
 		D:/QT/5.12.1/mingw73_64/include/QtGui/qvector2d.h \
 		D:/QT/5.12.1/mingw73_64/include/QtGui/qtouchdevice.h \
+		D:/QT/5.12.1/mingw73_64/include/QtGui/QList \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QString \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QCheckBox \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qcheckbox.h \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		D:/QT/5.12.1/mingw73_64/include/QtGui/qicon.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QDebug \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QMessageBox \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../Lab-Check-in-System/studentinformation.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QDateTime \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qdatetime.h \
+		../Lab-Check-in-System/databasecontroller.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSql \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsqlglobal.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsql-config.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlDatabase \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqldatabase.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlQuery \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqlquery.h \
 		release/moc_predefs.h \
 		D:/QT/5.12.1/mingw73_64/bin/moc.exe
 	D:\QT\5.12.1\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/krlic/Documents/GitHub/Computer-Lab-Check-in-System/build-LabCheck-inSystem-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/release/moc_predefs.h -ID:/QT/5.12.1/mingw73_64/mkspecs/win32-g++ -IC:/Users/krlic/Documents/GitHub/Computer-Lab-Check-in-System/Lab-Check-in-System -ID:/QT/5.12.1/mingw73_64/include -ID:/QT/5.12.1/mingw73_64/include/QtWidgets -ID:/QT/5.12.1/mingw73_64/include/QtGui -ID:/QT/5.12.1/mingw73_64/include/QtANGLE -ID:/QT/5.12.1/mingw73_64/include/QtSql -ID:/QT/5.12.1/mingw73_64/include/QtCore -I. -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Lab-Check-in-System\checkoutview.h -o release\moc_checkoutview.cpp
@@ -992,11 +1032,24 @@ release/main.o: ../Lab-Check-in-System/main.cpp D:/QT/5.12.1/mingw73_64/include/
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QMessageBox \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qmessagebox.h \
 		../Lab-Check-in-System/checkimanualview.h \
-		../Lab-Check-in-System/checkoutview.h \
-		../Lab-Check-in-System/addeventview.h \
-		../Lab-Check-in-System/eventinformation.h \
+		../Lab-Check-in-System/studentinformation.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/QDateTime \
-		D:/QT/5.12.1/mingw73_64/include/QtCore/qdatetime.h
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qdatetime.h \
+		../Lab-Check-in-System/checkoutview.h \
+		D:/QT/5.12.1/mingw73_64/include/QtGui/QList \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QCheckBox \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qcheckbox.h \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../Lab-Check-in-System/databasecontroller.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSql \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsqlglobal.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsql-config.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlDatabase \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqldatabase.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlQuery \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqlquery.h \
+		../Lab-Check-in-System/addeventview.h \
+		../Lab-Check-in-System/eventinformation.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\Lab-Check-in-System\main.cpp
 
 release/checkinview.o: ../Lab-Check-in-System/checkinview.cpp ../Lab-Check-in-System/checkinview.h \
@@ -1110,6 +1163,9 @@ release/checkinview.o: ../Lab-Check-in-System/checkinview.cpp ../Lab-Check-in-Sy
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QMessageBox \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qmessagebox.h \
 		../Lab-Check-in-System/checkimanualview.h \
+		../Lab-Check-in-System/studentinformation.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QDateTime \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qdatetime.h \
 		ui_checkinview.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/QVariant \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QApplication \
@@ -1264,11 +1320,24 @@ release/homepageview.o: ../Lab-Check-in-System/homepageview.cpp ../Lab-Check-in-
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QMessageBox \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qmessagebox.h \
 		../Lab-Check-in-System/checkimanualview.h \
-		../Lab-Check-in-System/checkoutview.h \
-		../Lab-Check-in-System/addeventview.h \
-		../Lab-Check-in-System/eventinformation.h \
+		../Lab-Check-in-System/studentinformation.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/QDateTime \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qdatetime.h \
+		../Lab-Check-in-System/checkoutview.h \
+		D:/QT/5.12.1/mingw73_64/include/QtGui/QList \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QCheckBox \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qcheckbox.h \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../Lab-Check-in-System/databasecontroller.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSql \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsqlglobal.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsql-config.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlDatabase \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqldatabase.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlQuery \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqlquery.h \
+		../Lab-Check-in-System/addeventview.h \
+		../Lab-Check-in-System/eventinformation.h \
 		ui_homepageview.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/QVariant \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QAction \
@@ -1313,25 +1382,14 @@ release/homepageview.o: ../Lab-Check-in-System/homepageview.cpp ../Lab-Check-in-
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qmenubar.h \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QPushButton \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qpushbutton.h \
-		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QStatusBar \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qstatusbar.h \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QTableWidget \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qtablewidget.h \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qtableview.h \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QWidget \
-		../Lab-Check-in-System/databasecontroller.h \
-		D:/QT/5.12.1/mingw73_64/include/QtSql/QSql \
-		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsqlglobal.h \
-		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsql-config.h \
-		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlDatabase \
-		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqldatabase.h \
-		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlQuery \
-		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqlquery.h \
-		../Lab-Check-in-System/studentinformation.h \
 		../Lab-Check-in-System/tablemethods.h \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QTableWidgetItem \
-		D:/QT/5.12.1/mingw73_64/include/QtGui/QList \
 		D:/QT/5.12.1/mingw73_64/include/QtSql/QtSql \
 		D:/QT/5.12.1/mingw73_64/include/QtSql/QtSqlDepends \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/QtCore \
@@ -1941,6 +1999,26 @@ release/checkoutview.o: ../Lab-Check-in-System/checkoutview.cpp ../Lab-Check-in-
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qfiledevice.h \
 		D:/QT/5.12.1/mingw73_64/include/QtGui/qvector2d.h \
 		D:/QT/5.12.1/mingw73_64/include/QtGui/qtouchdevice.h \
+		D:/QT/5.12.1/mingw73_64/include/QtGui/QList \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QString \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QCheckBox \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qcheckbox.h \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		D:/QT/5.12.1/mingw73_64/include/QtGui/qicon.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QDebug \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QMessageBox \
+		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../Lab-Check-in-System/studentinformation.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QDateTime \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qdatetime.h \
+		../Lab-Check-in-System/databasecontroller.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSql \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsqlglobal.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsql-config.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlDatabase \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqldatabase.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlQuery \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqlquery.h \
 		ui_checkoutview.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/QVariant \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QApplication \
@@ -1963,8 +2041,6 @@ release/checkoutview.o: ../Lab-Check-in-System/checkoutview.cpp ../Lab-Check-in-
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qlabel.h \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QPushButton \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qpushbutton.h \
-		D:/QT/5.12.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		D:/QT/5.12.1/mingw73_64/include/QtGui/qicon.h \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QVBoxLayout \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\checkoutview.o ..\Lab-Check-in-System\checkoutview.cpp
@@ -2009,18 +2085,21 @@ release/databasecontroller.o: ../Lab-Check-in-System/databasecontroller.cpp ../L
 		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqldatabase.h \
 		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlQuery \
 		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqlquery.h \
-		D:/QT/5.12.1/mingw73_64/include/QtCore/QDebug \
-		D:/QT/5.12.1/mingw73_64/include/QtCore/qdebug.h \
-		D:/QT/5.12.1/mingw73_64/include/QtCore/qalgorithms.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QDateTime \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qdatetime.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qshareddata.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qhash.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qiterator.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qlist.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qalgorithms.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qhashfunctions.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qpair.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qbytearraylist.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qstringlist.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qregexp.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qstringmatcher.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QDebug \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qdebug.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qmap.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qtextstream.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qiodevice.h \
@@ -2035,7 +2114,6 @@ release/databasecontroller.o: ../Lab-Check-in-System/databasecontroller.cpp ../L
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qobject_impl.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qlocale.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qvariant.h \
-		D:/QT/5.12.1/mingw73_64/include/QtCore/qshareddata.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qvector.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qpoint.h \
 		D:/QT/5.12.1/mingw73_64/include/QtCore/qset.h \
@@ -2190,6 +2268,61 @@ release/addeventview.o: ../Lab-Check-in-System/addeventview.cpp ../Lab-Check-in-
 		D:/QT/5.12.1/mingw73_64/include/QtGui/qicon.h \
 		D:/QT/5.12.1/mingw73_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\addeventview.o ..\Lab-Check-in-System\addeventview.cpp
+
+release/databasecontrollersingleton.o: ../Lab-Check-in-System/databasecontrollersingleton.cpp ../Lab-Check-in-System/databasecontrollersingleton.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlDatabase \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqldatabase.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsqlglobal.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qglobal.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qconfig.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qtcore-config.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qsystemdetection.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qprocessordetection.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qcompilerdetection.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qtypeinfo.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qsysinfo.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qlogging.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qflags.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qatomic.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qbasicatomic.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qatomic_bootstrap.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qgenericatomic.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qatomic_cxx11.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qatomic_msvc.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qglobalstatic.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qmutex.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qnumeric.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qversiontagging.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qtsql-config.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qstring.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qchar.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qbytearray.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qrefcount.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qnamespace.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qarraydata.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qstringliteral.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qstringalgorithms.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qstringview.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qstringbuilder.h \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/QSqlQuery \
+		D:/QT/5.12.1/mingw73_64/include/QtSql/qsqlquery.h \
+		../Lab-Check-in-System/studentinformation.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QString \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/QDateTime \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qdatetime.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qshareddata.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qhash.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qiterator.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qlist.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qalgorithms.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qhashfunctions.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qpair.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qbytearraylist.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qstringlist.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qregexp.h \
+		D:/QT/5.12.1/mingw73_64/include/QtCore/qstringmatcher.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\databasecontrollersingleton.o ..\Lab-Check-in-System\databasecontrollersingleton.cpp
 
 release/moc_checkinview.o: release/moc_checkinview.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_checkinview.o release\moc_checkinview.cpp
