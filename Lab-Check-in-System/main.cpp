@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
 
     //RE-ENABLE WHEN DATABASE CONTROL IS UPDATED TO NEW SINGLETON VERSION
-    //qInfo() << DatabaseControllerSingleton::getInstance()->connectToDatabase();
+    qInfo() << "Database Status: " << DatabaseControllerSingleton::getInstance()->connectToDatabase();
     h.show();
 
     return app.exec();

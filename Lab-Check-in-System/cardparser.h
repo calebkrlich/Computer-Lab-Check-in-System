@@ -4,23 +4,12 @@
 #include <QString>
 #include <QDebug>
 #include <QMessageBox>
-
-struct CardInfo
-{
-    QString status;
-    unsigned int ID;
-    QString firstName;
-    QString lastName;
-    QString middleInitial;
-    QString birthday;
-    QString registrationDate;
-
-};
+#include "studentinformation.h"
 
 class CardParser
 {
 private:
-    CardInfo cardInfo;
+    StudentInformation cardInfo;
 
 public:
     CardParser();
@@ -34,7 +23,7 @@ public:
     QString getBirthday();
     QString getRegistrationDate();
 
-    CardInfo getInfo();
+    StudentInformation getInfo();
     void printInfo();
 };
 

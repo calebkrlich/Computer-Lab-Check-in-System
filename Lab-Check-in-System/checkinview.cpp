@@ -24,14 +24,27 @@ CheckInView::~CheckInView()
 void CheckInView::on_CheckInButton_clicked()
 {
     QString cardText = ui->CardInputLineEdit->text();
-    CardInfo parsedCardInfo;
+
+
+    //NO NEED FOR CARD INFO Stuct, just use the StudentInfomation
+    StudentInformation parsedCardInfo;
 
     CardParser cardParser = CardParser();
     bool validCard = cardParser.Parse(cardText.toLatin1());
     parsedCardInfo = cardParser.getInfo();
 
+
     if(validCard)
     {
+        //if the student is a first time check in
+        if(!DatabaseControllerSingleton::getInstance()->
+                checkIfStudentExists(QString::number(parsedCardInfo.ID)))
+        {
+            //add them to the student database
+            DatabaseControllerSingleton::getInstance()->postStudent(parsedCardInfo);
+        }
+
+        /*
         DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");           //This needs to be it's own class
         qInfo() << db.openDatabase();
 
@@ -53,6 +66,8 @@ void CheckInView::on_CheckInButton_clicked()
                            parsedCardInfo.lastName);
         }
 
+
+
         int uid = db.getRowCount("logs") + 1;   //create a unique id from the last row's id
         if(db.postLog(uid, QString::number(parsedCardInfo.ID), QDateTime::currentDateTime()))
         {
@@ -73,12 +88,20 @@ void CheckInView::on_CheckInButton_clicked()
             conformationBox.exec();
             this->close();
         }
+        */
+        if(DatabaseControllerSingleton::getInstance()->postLog(parsedCardInfo))
+        {
+            emit(EventStudentCheckedIn(parsedCardInfo));
+            QMessageBox conformationBox;                    //Creates a notification popup for user
+            conformationBox.setText("Student signed-in");
+            conformationBox.exec();
+            this->close();
+        }
         else
         {
             qInfo() << "Database error";
         }
     }
-
     else
     {
         ui->SwipeCardLabel->setText("Invalid Card, Swipe Again");

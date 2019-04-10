@@ -14,10 +14,6 @@ HomePageView::HomePageView(QWidget *parent) :
     ui(new Ui::HomePageView)
 {
     ui->setupUi(this);
-
-    //Testing new singleton pattern
-    StudentInformation student;
-    DatabaseControllerSingleton::getInstance()->postStudent(student);
 }
 
 HomePageView::~HomePageView()

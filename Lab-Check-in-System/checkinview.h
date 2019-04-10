@@ -5,6 +5,7 @@
 #include "cardparser.h"
 #include "checkimanualview.h"
 #include "studentinformation.h"
+#include "databasecontrollersingleton.h"
 
 namespace Ui {
 class CheckInView;

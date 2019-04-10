@@ -36,14 +36,16 @@ public:
 
     //Posters
     bool postStudent(StudentInformation student);
-    bool postLog();
+    bool postLog(StudentInformation student);
 
     //Updaters
-    bool updateLog();
+    bool updateLog(StudentInformation student);
 
     //Getters
     StudentInformation getStudent(QString ID);
     StudentInformation getStudent(QString firstName, QString lastName);
+
+    bool checkIfStudentExists(QString ID);
 
     int getTableRowCount(QString table);
 

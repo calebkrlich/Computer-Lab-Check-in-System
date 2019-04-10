@@ -94,8 +94,8 @@ void CheckOutView::on_CancelButton_clicked()
 void CheckOutView::on_CheckOutButton_clicked()
 {
     QList<StudentInformation> studentsSignedOut;
-    DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");           //This needs to be it's own class
-    db.openDatabase();
+    //DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");           //This needs to be it's own class
+    //db.openDatabase();
 
     for(int i = 0; i < totalRows; i++)
     {
@@ -103,10 +103,12 @@ void CheckOutView::on_CheckOutButton_clicked()
         {
             studentsSignedOut.append(students[i]);
 
+            DatabaseControllerSingleton::getInstance()->updateLog(students[i]);
+            /*
             db.updateLog(QString::number(students[i].ID),
                          QDateTime::fromString(students[i].checkInTime),
                          QDateTime::currentDateTime()); //This is going to need changed
-
+            */
             qInfo() << QDateTime::fromString(students[i].checkInTime).toString("yyyy-MM-dd hh:mm:ss");
             emit(EventStudentCheckOut(students[i].ID));
         }

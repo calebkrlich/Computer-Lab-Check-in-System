@@ -13,7 +13,7 @@ QString CardParser::getMiddleInitial() { return cardInfo.middleInitial; }
 QString CardParser::getBirthday() { return cardInfo.birthday; }
 QString CardParser::getRegistrationDate() { return cardInfo.registrationDate; }
 
-CardInfo CardParser::getInfo() { return cardInfo; }
+StudentInformation CardParser::getInfo() { return cardInfo; }
 
 
 //NEEDS A REGULAR EXPRESSTION TO TEST
