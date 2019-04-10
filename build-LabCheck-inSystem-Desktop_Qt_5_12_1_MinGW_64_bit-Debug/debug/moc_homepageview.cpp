@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_HomePageView_t {
     QByteArrayData data[17];
-    char stringdata0[265];
+    char stringdata0[266];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,8 +46,8 @@ QT_MOC_LITERAL(11, 181, 7), // "student"
 QT_MOC_LITERAL(12, 189, 15), // "StudentToRemove"
 QT_MOC_LITERAL(13, 205, 9), // "studentID"
 QT_MOC_LITERAL(14, 215, 23), // "EventNewWindowToConnect"
-QT_MOC_LITERAL(15, 239, 17), // "CheckIManualView*"
-QT_MOC_LITERAL(16, 257, 7) // "newView"
+QT_MOC_LITERAL(15, 239, 18), // "CheckInManualView*"
+QT_MOC_LITERAL(16, 258, 7) // "newView"
 
     },
     "HomePageView\0StudentListChange\0\0"
@@ -57,7 +57,7 @@ QT_MOC_LITERAL(16, 257, 7) // "newView"
     "EventInformation\0event\0newStudentToAdd\0"
     "StudentInformation\0student\0StudentToRemove\0"
     "studentID\0EventNewWindowToConnect\0"
-    "CheckIManualView*\0newView"
+    "CheckInManualView*\0newView"
 };
 #undef QT_MOC_LITERAL
 
@@ -95,7 +95,7 @@ static const uint qt_meta_data_HomePageView[] = {
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 7,    8,
     QMetaType::Void, 0x80000000 | 10,   11,
-    QMetaType::Void, QMetaType::UInt,   13,
+    QMetaType::Void, QMetaType::QString,   13,
     QMetaType::Void, 0x80000000 | 15,   16,
 
        0        // eod
@@ -113,8 +113,8 @@ void HomePageView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 3: _t->on_AddEventButton_clicked(); break;
         case 4: _t->newEventToAdd((*reinterpret_cast< EventInformation(*)>(_a[1]))); break;
         case 5: _t->newStudentToAdd((*reinterpret_cast< StudentInformation(*)>(_a[1]))); break;
-        case 6: _t->StudentToRemove((*reinterpret_cast< uint(*)>(_a[1]))); break;
-        case 7: _t->EventNewWindowToConnect((*reinterpret_cast< CheckIManualView*(*)>(_a[1]))); break;
+        case 6: _t->StudentToRemove((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 7: _t->EventNewWindowToConnect((*reinterpret_cast< CheckInManualView*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -124,7 +124,7 @@ void HomePageView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
-                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< CheckIManualView* >(); break;
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< CheckInManualView* >(); break;
             }
             break;
         }

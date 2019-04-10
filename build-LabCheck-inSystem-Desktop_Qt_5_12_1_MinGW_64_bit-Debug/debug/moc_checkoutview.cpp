@@ -66,7 +66,7 @@ static const uint qt_meta_data_CheckOutView[] = {
        5,    0,   33,    2, 0x08 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::UInt,    3,
+    QMetaType::Void, QMetaType::QString,    3,
 
  // slots: parameters
     QMetaType::Void,
@@ -81,7 +81,7 @@ void CheckOutView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         auto *_t = static_cast<CheckOutView *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->EventStudentCheckOut((*reinterpret_cast< uint(*)>(_a[1]))); break;
+        case 0: _t->EventStudentCheckOut((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->on_CancelButton_clicked(); break;
         case 2: _t->on_CheckOutButton_clicked(); break;
         default: ;
@@ -89,7 +89,7 @@ void CheckOutView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (CheckOutView::*)(unsigned int );
+            using _t = void (CheckOutView::*)(QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CheckOutView::EventStudentCheckOut)) {
                 *result = 0;
                 return;
@@ -139,7 +139,7 @@ int CheckOutView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void CheckOutView::EventStudentCheckOut(unsigned int _t1)
+void CheckOutView::EventStudentCheckOut(QString _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

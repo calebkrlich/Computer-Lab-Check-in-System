@@ -2,13 +2,12 @@ debug/main.o
 debug/checkinview.o
 debug/homepageview.o
 debug/cardparser.o
-debug/checkimanualview.o
 debug/checkoutview.o
-debug/databasecontroller.o
 debug/addeventview.o
 debug/databasecontrollersingleton.o
+debug/checkinmanualview.o
 debug/moc_checkinview.o
 debug/moc_homepageview.o
-debug/moc_checkimanualview.o
 debug/moc_checkoutview.o
 debug/moc_addeventview.o
+debug/moc_checkinmanualview.o

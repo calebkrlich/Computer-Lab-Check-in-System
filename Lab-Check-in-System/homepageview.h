@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "checkinview.h"
-#include "checkimanualview.h"
+#include "checkinmanualview.h"
 #include "checkoutview.h"
 #include "addeventview.h"
 #include "eventinformation.h"
@@ -35,9 +35,9 @@ private slots:
 
     void newStudentToAdd(StudentInformation student);
 
-    void StudentToRemove(unsigned int studentID);
+    void StudentToRemove(QString studentID);
 
-    void EventNewWindowToConnect(CheckIManualView* newView);
+    void EventNewWindowToConnect(CheckInManualView* newView);
 
 private:
     Ui::HomePageView *ui;

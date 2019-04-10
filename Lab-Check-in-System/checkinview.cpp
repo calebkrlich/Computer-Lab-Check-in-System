@@ -1,6 +1,5 @@
 #include "checkinview.h"
 #include "ui_checkinview.h"
-#include "databasecontroller.h"
 
 CheckInView::CheckInView(QWidget *parent) :
     QDialog(parent),
@@ -36,68 +35,34 @@ void CheckInView::on_CheckInButton_clicked()
     {
         //if the student is a first time check in
         if(!DatabaseControllerSingleton::getInstance()->
-                checkIfStudentExists(QString::number(parsedCardInfo.ID)))
+                checkIfStudentExists(parsedCardInfo.ID))
         {
             //add them to the student database
             DatabaseControllerSingleton::getInstance()->postStudent(parsedCardInfo);
         }
 
-        /*
-        DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");           //This needs to be it's own class
-        qInfo() << db.openDatabase();
-
-        //Add student to database if they haven't been added before
-        QSqlQuery result = db.getStudentFromID(QString::number(parsedCardInfo.ID));
-        bool newStudent = true;
-
-        while(result.next())
+        //if the student is not signed in
+        if(!DatabaseControllerSingleton::getInstance()->checkIfStudentSignedIn(parsedCardInfo.ID))
         {
-            qInfo() << result.value(0);
-            newStudent = false;
-        }
-
-        if(newStudent)
-        {
-            qInfo() << "NEW STUDENT";
-            db.postStudent(QString::number(parsedCardInfo.ID),
-                           parsedCardInfo.firstName,
-                           parsedCardInfo.lastName);
-        }
-
-
-
-        int uid = db.getRowCount("logs") + 1;   //create a unique id from the last row's id
-        if(db.postLog(uid, QString::number(parsedCardInfo.ID), QDateTime::currentDateTime()))
-        {
-            StudentInformation studentInfoToEmit;
-            studentInfoToEmit.ID = parsedCardInfo.ID;
-            studentInfoToEmit.firstName = parsedCardInfo.firstName;
-            studentInfoToEmit.lastName = parsedCardInfo.lastName;
-            studentInfoToEmit.birthday = parsedCardInfo.birthday;
-            studentInfoToEmit.middleInitial = parsedCardInfo.middleInitial;
-
-            studentInfoToEmit.checkInTime = "HELP ME"; //Testing weird bug
-            studentInfoToEmit.checkOutTime = "WEAD";
-
-            emit(EventStudentCheckedIn(studentInfoToEmit)); //emit signal to update homepage UI
-
-            QMessageBox conformationBox;                    //Creates a notification popup for user
-            conformationBox.setText("Student signed-in");
-            conformationBox.exec();
-            this->close();
-        }
-        */
-        if(DatabaseControllerSingleton::getInstance()->postLog(parsedCardInfo))
-        {
-            emit(EventStudentCheckedIn(parsedCardInfo));
-            QMessageBox conformationBox;                    //Creates a notification popup for user
-            conformationBox.setText("Student signed-in");
-            conformationBox.exec();
-            this->close();
+            if(DatabaseControllerSingleton::getInstance()->postLog(parsedCardInfo))
+            {
+                parsedCardInfo.checkInTime = QDateTime::currentDateTime().toString();
+                emit(EventStudentCheckedIn(parsedCardInfo));
+                QMessageBox conformationBox;                    //Creates a notification popup for user
+                conformationBox.setText("Student signed-in");
+                conformationBox.exec();
+                this->close();
+            }
+            else
+            {
+                qInfo() << "Database error";
+            }
         }
         else
         {
-            qInfo() << "Database error";
+            QMessageBox alreadySignedInMessageBox;
+            alreadySignedInMessageBox.setText("Already signed in!");
+            alreadySignedInMessageBox.exec();
         }
     }
     else
@@ -115,7 +80,7 @@ void CheckInView::on_CancelButton_clicked()
 void CheckInView::on_ManualCheckInButton_clicked()
 {
     this->close();
-    checkInManualView = new CheckIManualView(this);
+    checkInManualView = new CheckInManualView(this);
     checkInManualView->show();
 
     //Tell the homepage to connect and listen to new page

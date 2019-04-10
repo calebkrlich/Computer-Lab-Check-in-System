@@ -45,7 +45,10 @@ public:
     StudentInformation getStudent(QString ID);
     StudentInformation getStudent(QString firstName, QString lastName);
 
+    QList<StudentInformation> getStudentsCheckedIn();
+
     bool checkIfStudentExists(QString ID);
+    bool checkIfStudentSignedIn(QString ID);
 
     int getTableRowCount(QString table);
 

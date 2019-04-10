@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CheckInView_t {
     QByteArrayData data[11];
-    char stringdata0[196];
+    char stringdata0[197];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,17 +37,17 @@ QT_MOC_LITERAL(2, 34, 0), // ""
 QT_MOC_LITERAL(3, 35, 18), // "StudentInformation"
 QT_MOC_LITERAL(4, 54, 7), // "student"
 QT_MOC_LITERAL(5, 62, 27), // "EventConnectToNewManualView"
-QT_MOC_LITERAL(6, 90, 17), // "CheckIManualView*"
-QT_MOC_LITERAL(7, 108, 7), // "newView"
-QT_MOC_LITERAL(8, 116, 24), // "on_CheckInButton_clicked"
-QT_MOC_LITERAL(9, 141, 23), // "on_CancelButton_clicked"
-QT_MOC_LITERAL(10, 165, 30) // "on_ManualCheckInButton_clicked"
+QT_MOC_LITERAL(6, 90, 18), // "CheckInManualView*"
+QT_MOC_LITERAL(7, 109, 7), // "newView"
+QT_MOC_LITERAL(8, 117, 24), // "on_CheckInButton_clicked"
+QT_MOC_LITERAL(9, 142, 23), // "on_CancelButton_clicked"
+QT_MOC_LITERAL(10, 166, 30) // "on_ManualCheckInButton_clicked"
 
     },
     "CheckInView\0EventStudentCheckedIn\0\0"
     "StudentInformation\0student\0"
     "EventConnectToNewManualView\0"
-    "CheckIManualView*\0newView\0"
+    "CheckInManualView*\0newView\0"
     "on_CheckInButton_clicked\0"
     "on_CancelButton_clicked\0"
     "on_ManualCheckInButton_clicked"
@@ -95,7 +95,7 @@ void CheckInView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->EventStudentCheckedIn((*reinterpret_cast< StudentInformation(*)>(_a[1]))); break;
-        case 1: { bool _r = _t->EventConnectToNewManualView((*reinterpret_cast< CheckIManualView*(*)>(_a[1])));
+        case 1: { bool _r = _t->EventConnectToNewManualView((*reinterpret_cast< CheckInManualView*(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 2: _t->on_CheckInButton_clicked(); break;
         case 3: _t->on_CancelButton_clicked(); break;
@@ -109,7 +109,7 @@ void CheckInView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
-                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< CheckIManualView* >(); break;
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< CheckInManualView* >(); break;
             }
             break;
         }
@@ -123,7 +123,7 @@ void CheckInView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             }
         }
         {
-            using _t = bool (CheckInView::*)(CheckIManualView * );
+            using _t = bool (CheckInView::*)(CheckInManualView * );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CheckInView::EventConnectToNewManualView)) {
                 *result = 1;
                 return;
@@ -180,7 +180,7 @@ void CheckInView::EventStudentCheckedIn(StudentInformation _t1)
 }
 
 // SIGNAL 1
-bool CheckInView::EventConnectToNewManualView(CheckIManualView * _t1)
+bool CheckInView::EventConnectToNewManualView(CheckInManualView * _t1)
 {
     bool _t0{};
     void *_a[] = { const_cast<void*>(reinterpret_cast<const void*>(&_t0)), const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };

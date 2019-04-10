@@ -34,7 +34,7 @@ private slots:
     void on_CheckOutButton_clicked();
 
 signals:
-    void EventStudentCheckOut(unsigned int studentID);
+    void EventStudentCheckOut(QString studentID);
 
 private:
     Ui::CheckOutView *ui;

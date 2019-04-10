@@ -7,7 +7,7 @@
 struct StudentInformation
 {
     QString status;
-    unsigned int ID;
+    QString ID;
     QString firstName;
     QString lastName;
     QString middleInitial;

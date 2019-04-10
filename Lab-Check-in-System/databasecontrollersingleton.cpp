@@ -10,7 +10,7 @@ bool DatabaseControllerSingleton::postStudent(StudentInformation student)
 
     //gross representation of a query
     queryString = ("INSERT INTO students (YSU_ID,NAME_FIRST,NAME_LAST) VALUES ('" +
-                   QString::number(student.ID).toLatin1() + "'" + "," + "'" +
+                   student.ID.toLatin1() + "'" + "," + "'" +
                    student.firstName.toLatin1() + "'" + "," + "'" +
                    student.lastName.toLatin1() + "'" + ");");
 
@@ -29,7 +29,7 @@ bool DatabaseControllerSingleton::postLog(StudentInformation student)
 
     queryString = ("INSERT into logs (UID,YSU_ID,TIME_CHECK_IN) VALUES(" +
                   QString::number(UID) + "," + "'" +
-                   QString::number(student.ID).toLatin1() + "','" +
+                   student.ID.toLatin1() + "','" +
                    QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") + "');");
 
     qInfo() << queryString;
@@ -47,7 +47,7 @@ bool DatabaseControllerSingleton::updateLog(StudentInformation student)
 
     queryString = ("UPDATE logs SET TIME_CHECK_OUT = '" +
                    QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss")+
-                   "' WHERE YSU_ID = " + QString::number(student.ID).toLatin1() +
+                   "' WHERE YSU_ID = " + student.ID.toLatin1() +
                    " and TIME_CHECK_IN = '" +
                    studentCheckIn.toString("yyyy-MM-dd hh:mm:ss") + "';");
 
@@ -73,6 +73,32 @@ StudentInformation DatabaseControllerSingleton::getStudent(QString ID)
 
 }
 
+QList<StudentInformation> DatabaseControllerSingleton::getStudentsCheckedIn()
+{
+    QList<StudentInformation> listOfStudents;
+    QSqlQuery query;
+
+    query.exec("SELECT students.YSU_ID, students.NAME_FIRST, students.NAME_LAST, logs.TIME_CHECK_IN from students,logs where logs.TIME_CHECK_OUT is null and logs.YSU_ID = students.YSU_ID;");
+
+    while(query.next())
+    {
+        StudentInformation tempStudent;
+
+        tempStudent.ID = query.value(0).toString();
+        tempStudent.firstName = query.value(1).toString();
+        tempStudent.lastName = query.value(2).toString();
+
+        QStringList unformattedTime = query.value(3).toString().split("T");
+        unformattedTime[1].truncate(8);
+        QDateTime timeToFormat = QDateTime::fromString((unformattedTime[0] + " " + unformattedTime[1]),"yyyy-MM-dd hh:mm:ss");
+
+        tempStudent.checkInTime = timeToFormat.toString();
+        listOfStudents.append(tempStudent);
+    }
+
+    return listOfStudents;
+}
+
 /*
  * Checks to see if student exists in the database
  */
@@ -82,12 +108,24 @@ bool DatabaseControllerSingleton::checkIfStudentExists(QString ID)
 
     query.exec("select * from students where YSU_ID = " + ID.toLatin1() + ";");
 
-    while(query.next())
+    if(query.next())
     {
-        return false;
+        qInfo() << query.value(0).toString();
+        return true;
     }
 
-    return true;
+    return false;
+}
+
+bool DatabaseControllerSingleton::checkIfStudentSignedIn(QString ID)
+{
+    QSqlQuery query;
+
+    query.exec("select * from logs where TIME_CHECK_OUT is null and YSU_ID = '" + ID.toLatin1() + "';");
+
+    if(query.next())    //if we get something back, they are signed in
+        return true;
+    return false;
 }
 
 int DatabaseControllerSingleton::getTableRowCount(QString table)

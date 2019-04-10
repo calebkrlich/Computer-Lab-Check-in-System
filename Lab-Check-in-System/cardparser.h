@@ -16,7 +16,7 @@ public:
     bool Parse(QString cardData);
 
     QString getStatus();
-    unsigned int getID();
+    QString getID();
     QString getFirstname();
     QString getLastname();
     QString getMiddleInitial();

@@ -94,6 +94,9 @@ public:
         SignedInTable->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         SignedInTable->setObjectName(QString::fromUtf8("SignedInTable"));
         SignedInTable->setGeometry(QRect(10, 30, 421, 331));
+        SignedInTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        SignedInTable->setTabKeyNavigation(true);
+        SignedInTable->setProperty("showDropIndicator", QVariant(true));
         groupBox_2 = new QGroupBox(centralwidget);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         groupBox_2->setGeometry(QRect(0, 90, 191, 231));
@@ -146,6 +149,7 @@ public:
         EventTable->setHorizontalHeaderItem(3, __qtablewidgetitem7);
         EventTable->setObjectName(QString::fromUtf8("EventTable"));
         EventTable->setGeometry(QRect(10, 30, 451, 331));
+        EventTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
         HomePageView->setCentralWidget(centralwidget);
         menubar = new QMenuBar(HomePageView);
         menubar->setObjectName(QString::fromUtf8("menubar"));

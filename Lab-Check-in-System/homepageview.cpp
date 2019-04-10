@@ -1,7 +1,6 @@
 #include "homepageview.h"
 #include "ui_homepageview.h"
 #include "checkinview.h"
-#include "databasecontroller.h"
 #include "studentinformation.h"
 #include "tablemethods.h"
 #include "databasecontrollersingleton.h"
@@ -14,6 +13,14 @@ HomePageView::HomePageView(QWidget *parent) :
     ui(new Ui::HomePageView)
 {
     ui->setupUi(this);
+
+    DatabaseControllerSingleton* db = DatabaseControllerSingleton::getInstance();
+    QList<StudentInformation> studentsSignedIn = db->getStudentsCheckedIn();
+
+    for(int i = 0; i < studentsSignedIn.length(); i++)
+    {
+        newStudentToAdd(studentsSignedIn[i]);
+    }
 }
 
 HomePageView::~HomePageView()
@@ -47,17 +54,14 @@ void HomePageView::on_CheckOutButton_clicked()
 
     for(int i = 0; i < ui->SignedInTable->rowCount();i++)
     {
-        qInfo() << "I'm gonna lose my mind";
 
         StudentInformation tempStudent;
-        tempStudent.ID = ui->SignedInTable->item(i,0)->text().toUInt();
+        tempStudent.ID = ui->SignedInTable->item(i,0)->text();
         tempStudent.firstName = ui->SignedInTable->item(i,1)->text();
         tempStudent.lastName = ui->SignedInTable->item(i,2)->text();
         tempStudent.checkInTime = ui->SignedInTable->item(i,3)->text();
 
-        qInfo() << "This bug is moving";
         listOfStudents.append(tempStudent);
-        qInfo() << "did it get here";
     }
 
     checkOutView->setTotalRows(ui->SignedInTable->rowCount());
@@ -110,10 +114,12 @@ void HomePageView::newStudentToAdd(StudentInformation student)
     QList<QString> rowToAdd;
     QDateTime timeCheckedIn;
 
-    rowToAdd.append(QString::number(student.ID));
+    rowToAdd.append(student.ID);
     rowToAdd.append(student.firstName);
     rowToAdd.append(student.lastName);
-    rowToAdd.append(timeCheckedIn.currentDateTime().toString());
+    rowToAdd.append(student.checkInTime);
+
+    qInfo() << student.checkInTime;
 
     TableOperators::addRow(ui->SignedInTable,rowToAdd);
 }
@@ -122,12 +128,12 @@ void HomePageView::newStudentToAdd(StudentInformation student)
  * Function: Removes student from sign-in table with the id specified
  * PARAMS: studentID: id of student to remove
  */
-void HomePageView::StudentToRemove(unsigned int studentID)
+void HomePageView::StudentToRemove(QString studentID)
 {
-    TableOperators::removeRowWithValue(ui->SignedInTable,QString::number(studentID));   //Delete the student from the row
+    TableOperators::removeRowWithValue(ui->SignedInTable,studentID);   //Delete the student from the row
 }
 
-void HomePageView::EventNewWindowToConnect(CheckIManualView* newView)
+void HomePageView::EventNewWindowToConnect(CheckInManualView* newView)
 {
-    QObject::connect(newView,&CheckIManualView::EventStudentCheckedIn,this,&HomePageView::newStudentToAdd);
+    QObject::connect(newView,&CheckInManualView::EventStudentCheckedIn,this,&HomePageView::newStudentToAdd);
 }

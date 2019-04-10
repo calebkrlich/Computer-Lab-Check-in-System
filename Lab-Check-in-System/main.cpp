@@ -7,11 +7,9 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    HomePageView h;
-
-
-    //RE-ENABLE WHEN DATABASE CONTROL IS UPDATED TO NEW SINGLETON VERSION
     qInfo() << "Database Status: " << DatabaseControllerSingleton::getInstance()->connectToDatabase();
+
+    HomePageView h;
     h.show();
 
     return app.exec();

@@ -6,7 +6,7 @@ CardParser::CardParser()
 }
 
 QString CardParser::getStatus() { return cardInfo.status; }
-unsigned int CardParser::getID() { return cardInfo.ID; }
+QString CardParser::getID() { return cardInfo.ID; }
 QString CardParser::getFirstname() { return cardInfo.firstName; }
 QString CardParser::getLastname() { return cardInfo.lastName; }
 QString CardParser::getMiddleInitial() { return cardInfo.middleInitial; }
@@ -43,7 +43,7 @@ bool CardParser::Parse(QString cardData)
         cardInfo.status = "Student Faculty";
 
     //YSU NUMBER
-    cardInfo.ID = splitCardData[1].toUInt();
+    cardInfo.ID = splitCardData[1].toLatin1();
 
     //Last Name
     cardInfo.lastName = splitCardData[2].toLatin1();

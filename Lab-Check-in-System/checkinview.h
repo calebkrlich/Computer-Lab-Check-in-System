@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include "cardparser.h"
-#include "checkimanualview.h"
+#include "checkinmanualview.h"
 #include "studentinformation.h"
 #include "databasecontrollersingleton.h"
 
@@ -21,11 +21,11 @@ public:
 
 private:
     Ui::CheckInView *ui;
-    CheckIManualView *checkInManualView;
+    CheckInManualView *checkInManualView;
 
 signals:
     void EventStudentCheckedIn(StudentInformation student);
-    bool EventConnectToNewManualView(CheckIManualView* newView);
+    bool EventConnectToNewManualView(CheckInManualView* newView);
 
 private slots:
     void on_CheckInButton_clicked();
