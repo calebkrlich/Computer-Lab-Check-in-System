@@ -37,6 +37,8 @@ private slots:
 
     void StudentToRemove(unsigned int studentID);
 
+    void EventNewWindowToConnect(CheckIManualView* newView);
+
 private:
     Ui::HomePageView *ui;
     CheckInView *checkInView;

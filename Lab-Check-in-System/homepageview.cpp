@@ -32,6 +32,7 @@ void HomePageView::on_CheckInButton_clicked()
     checkInView->show();
 
     QObject::connect(checkInView,&CheckInView::EventStudentCheckedIn,this,&HomePageView::newStudentToAdd);
+    QObject::connect(checkInView, &CheckInView::EventConnectToNewManualView, this, &HomePageView::EventNewWindowToConnect);
 }
 
 /*
@@ -124,4 +125,9 @@ void HomePageView::newStudentToAdd(StudentInformation student)
 void HomePageView::StudentToRemove(unsigned int studentID)
 {
     TableOperators::removeRowWithValue(ui->SignedInTable,QString::number(studentID));   //Delete the student from the row
+}
+
+void HomePageView::EventNewWindowToConnect(CheckIManualView* newView)
+{
+    QObject::connect(newView,&CheckIManualView::EventStudentCheckedIn,this,&HomePageView::newStudentToAdd);
 }

@@ -25,8 +25,6 @@ void CheckInView::on_CheckInButton_clicked()
 {
     QString cardText = ui->CardInputLineEdit->text();
 
-
-    //NO NEED FOR CARD INFO Stuct, just use the StudentInfomation
     StudentInformation parsedCardInfo;
 
     CardParser cardParser = CardParser();
@@ -119,5 +117,8 @@ void CheckInView::on_ManualCheckInButton_clicked()
     this->close();
     checkInManualView = new CheckIManualView(this);
     checkInManualView->show();
+
+    //Tell the homepage to connect and listen to new page
+    emit(EventConnectToNewManualView(checkInManualView));
 }
 

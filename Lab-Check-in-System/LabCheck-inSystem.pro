@@ -16,7 +16,6 @@ SOURCES += \
         main.cpp \
     checkinview.cpp \
     homepageview.cpp \
-    checkedinview.cpp \
     cardparser.cpp \
     checkimanualview.cpp \
     checkoutview.cpp \
@@ -38,7 +37,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     checkinview.h \
     homepageview.h \
-    checkedinview.h \
     cardparser.h \
     checkimanualview.h \
     checkoutview.h \
@@ -52,7 +50,6 @@ HEADERS += \
 FORMS += \
     checkinview.ui \
     homepageview.ui \
-    checkedinview.ui \
     checkimanualview.ui \
     checkoutview.ui \
     addeventview.ui

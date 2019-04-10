@@ -25,7 +25,7 @@ private:
 
 signals:
     void EventStudentCheckedIn(StudentInformation student);
-
+    bool EventConnectToNewManualView(CheckIManualView* newView);
 
 private slots:
     void on_CheckInButton_clicked();

@@ -49,7 +49,6 @@ public:
     QMenuBar *menubar;
     QMenu *menuLab_Check_in_System;
     QMenu *menuEdit;
-    QMenu *menuView;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *HomePageView)
@@ -155,8 +154,6 @@ public:
         menuLab_Check_in_System->setObjectName(QString::fromUtf8("menuLab_Check_in_System"));
         menuEdit = new QMenu(menubar);
         menuEdit->setObjectName(QString::fromUtf8("menuEdit"));
-        menuView = new QMenu(menubar);
-        menuView->setObjectName(QString::fromUtf8("menuView"));
         HomePageView->setMenuBar(menubar);
         statusbar = new QStatusBar(HomePageView);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -164,10 +161,7 @@ public:
 
         menubar->addAction(menuLab_Check_in_System->menuAction());
         menubar->addAction(menuEdit->menuAction());
-        menubar->addAction(menuView->menuAction());
         menuEdit->addSeparator();
-        menuView->addAction(actionClass_Schedule);
-        menuView->addAction(actionChecked_In_Students);
 
         retranslateUi(HomePageView);
 
@@ -207,7 +201,6 @@ public:
         ___qtablewidgetitem7->setText(QApplication::translate("HomePageView", "End Time", nullptr));
         menuLab_Check_in_System->setTitle(QApplication::translate("HomePageView", "File", nullptr));
         menuEdit->setTitle(QApplication::translate("HomePageView", "Edit", nullptr));
-        menuView->setTitle(QApplication::translate("HomePageView", "View", nullptr));
     } // retranslateUi
 
 };
