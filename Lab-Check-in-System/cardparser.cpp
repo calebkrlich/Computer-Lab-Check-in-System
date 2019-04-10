@@ -15,6 +15,10 @@ QString CardParser::getRegistrationDate() { return cardInfo.registrationDate; }
 
 CardInfo CardParser::getInfo() { return cardInfo; }
 
+
+//NEEDS A REGULAR EXPRESSTION TO TEST
+//FULL MATCH REGEX
+//((%S)|(%X)|(%E))(\\)([0-9]*)(\\)([A-Z]*)(\\)([A-Z]*)(\\)([A-Z]*)(\\)(([0-9]*)(\/)([0-9]*)(\/)([0-9]*)?)(((\\)([0-9]+)(\/)([0-9]+)(\/)([0-9]+)(\?))|(\?))(\@)([0-9]+)(\?&Y)([0-9]+)(\?)
 bool CardParser::Parse(QString cardData)
 {
     //Check if the input is valid card Info

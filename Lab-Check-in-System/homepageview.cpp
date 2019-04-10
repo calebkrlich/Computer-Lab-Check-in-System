@@ -4,6 +4,7 @@
 #include "databasecontroller.h"
 #include "studentinformation.h"
 #include "tablemethods.h"
+#include "databasecontrollersingleton.h"
 
 #include <QtSql>
 #include <QDateTime>
@@ -13,6 +14,10 @@ HomePageView::HomePageView(QWidget *parent) :
     ui(new Ui::HomePageView)
 {
     ui->setupUi(this);
+
+    //Testing new singleton pattern
+    StudentInformation student;
+    DatabaseControllerSingleton::getInstance()->postStudent(student);
 }
 
 HomePageView::~HomePageView()
