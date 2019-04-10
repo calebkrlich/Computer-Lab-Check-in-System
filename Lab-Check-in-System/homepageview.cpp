@@ -15,12 +15,19 @@ HomePageView::HomePageView(QWidget *parent) :
     ui->setupUi(this);
 
     DatabaseControllerSingleton* db = DatabaseControllerSingleton::getInstance();
-    QList<StudentInformation> studentsSignedIn = db->getStudentsCheckedIn();
 
+    QList<StudentInformation> studentsSignedIn = db->getStudentsCheckedIn();
     for(int i = 0; i < studentsSignedIn.length(); i++)
     {
         newStudentToAdd(studentsSignedIn[i]);
     }
+
+    QList<EventInformation> eventsActive = db->getActiveEvents();
+    for(int i = 0; i < eventsActive.length(); i++)
+    {
+        newEventToAdd(eventsActive[i]);
+    }
+
 }
 
 HomePageView::~HomePageView()

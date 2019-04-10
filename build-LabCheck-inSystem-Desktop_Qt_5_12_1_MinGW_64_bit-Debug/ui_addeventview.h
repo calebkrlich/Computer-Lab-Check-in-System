@@ -87,6 +87,7 @@ public:
 
         startTimeDateTimeEdit = new QDateTimeEdit(formLayoutWidget);
         startTimeDateTimeEdit->setObjectName(QString::fromUtf8("startTimeDateTimeEdit"));
+        startTimeDateTimeEdit->setDateTime(QDateTime(QDate(2000, 1, 1), QTime(0, 0, 0)));
 
         formLayout->setWidget(2, QFormLayout::FieldRole, startTimeDateTimeEdit);
 

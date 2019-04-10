@@ -113,12 +113,12 @@ void CheckOutView::on_CheckOutButton_clicked()
         messageBoxString.append(studentsSignedOut[i].ID.toLatin1() + ": ");
         messageBoxString.append(studentsSignedOut[i].firstName + ",");
         messageBoxString.append(studentsSignedOut[i].lastName + ": ");
-        messageBoxString.append(QDateTime::currentDateTime().toString());
+        messageBoxString.append(QDateTime::currentDateTime().toString() + "\n");
     }
 
     QMessageBox comformationBox;
     comformationBox.setText(messageBoxString);
-    comformationBox.setWindowTitle("");
+    comformationBox.setWindowTitle("Sucessful");
     comformationBox.exec();
     this->close();
 }

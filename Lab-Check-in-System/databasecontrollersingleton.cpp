@@ -37,6 +37,24 @@ bool DatabaseControllerSingleton::postLog(StudentInformation student)
     return queryToExecute.exec(queryString.toLatin1());
 }
 
+bool DatabaseControllerSingleton::postEvent(EventInformation event)
+{
+    QSqlQuery query;
+    QString queryString;
+
+    int UID = getTableRowCount("events") + 1;
+
+    queryString = ("insert into events (UID,NAME,START_TIME,END_TIME,ROOM_NUM) values(" +
+                   QString::number(UID) + "," +
+                   "'" + event.name + "'," +
+                   "'" + event.startDateTime.toString("yyyy-MM-dd hh:mm:ss") + "'," +
+                   "'" + event.endDateTime.toString("yyyy-MM-dd hh:mm:ss") + "'," +
+                   "'" + event.room + "');");
+
+
+    return query.exec(queryString);
+}
+
 bool DatabaseControllerSingleton::updateLog(StudentInformation student)
 {
     QString queryString;
@@ -66,12 +84,6 @@ bool DatabaseControllerSingleton::connectToDatabase()
     return database.open();
 }
 
-StudentInformation DatabaseControllerSingleton::getStudent(QString ID)
-{
-    StudentInformation out;
-
-
-}
 
 QList<StudentInformation> DatabaseControllerSingleton::getStudentsCheckedIn()
 {
@@ -98,6 +110,35 @@ QList<StudentInformation> DatabaseControllerSingleton::getStudentsCheckedIn()
 
     return listOfStudents;
 }
+
+QList<EventInformation> DatabaseControllerSingleton::getActiveEvents()
+{
+    QList<EventInformation> eventsToReturn;
+
+    QSqlQuery query;
+
+    query.exec("select * from events where END_TIME > curtime();");
+
+    while(query.next())
+    {
+        EventInformation tempEvent;
+
+        QStringList unformattedTime = query.value(2).toString().split("T");
+        unformattedTime[1].truncate(8);
+        tempEvent.startDateTime = QDateTime::fromString(unformattedTime[0] + " " + unformattedTime[1], "yyyy-MM-dd hh:mm:ss");
+
+        unformattedTime = query.value(3).toString().split("T");
+        unformattedTime[1].truncate(8);
+        tempEvent.endDateTime = QDateTime::fromString(unformattedTime[0] + " " + unformattedTime[1], "yyyy-MM-dd hh:mm:ss");
+
+        tempEvent.room = query.value(4).toString();
+        tempEvent.name = query.value(1).toString();
+        eventsToReturn.append(tempEvent);
+    }
+
+    return eventsToReturn;
+}
+
 
 /*
  * Checks to see if student exists in the database

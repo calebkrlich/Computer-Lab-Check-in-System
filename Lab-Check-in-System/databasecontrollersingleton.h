@@ -4,6 +4,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include "studentinformation.h"
+#include "eventinformation.h"
 
 #define DATABASE_TYPE "QMYSQL"
 #define DATABASE_HOST_NAME "localhost"
@@ -37,6 +38,7 @@ public:
     //Posters
     bool postStudent(StudentInformation student);
     bool postLog(StudentInformation student);
+    bool postEvent(EventInformation event);
 
     //Updaters
     bool updateLog(StudentInformation student);
@@ -44,13 +46,15 @@ public:
     //Getters
     StudentInformation getStudent(QString ID);
     StudentInformation getStudent(QString firstName, QString lastName);
-
     QList<StudentInformation> getStudentsCheckedIn();
+    QList<EventInformation> getActiveEvents();
+    int getTableRowCount(QString table);
 
+    //Checkers
     bool checkIfStudentExists(QString ID);
     bool checkIfStudentSignedIn(QString ID);
 
-    int getTableRowCount(QString table);
+
 
 private:
    QSqlDatabase database;
