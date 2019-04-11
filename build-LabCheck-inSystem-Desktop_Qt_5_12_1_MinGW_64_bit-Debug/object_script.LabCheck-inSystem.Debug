@@ -6,8 +6,10 @@ debug/checkoutview.o
 debug/addeventview.o
 debug/databasecontrollersingleton.o
 debug/checkinmanualview.o
+debug/filecreator.o
 debug/moc_checkinview.o
 debug/moc_homepageview.o
 debug/moc_checkoutview.o
 debug/moc_addeventview.o
 debug/moc_checkinmanualview.o
+debug/moc_filecreator.o

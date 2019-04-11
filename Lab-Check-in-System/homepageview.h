@@ -39,6 +39,8 @@ private slots:
 
     void EventNewWindowToConnect(CheckInManualView* newView);
 
+    void on_actionSave_logs_triggered();
+
 private:
     Ui::HomePageView *ui;
     CheckInView *checkInView;

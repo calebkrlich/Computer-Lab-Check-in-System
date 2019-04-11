@@ -33,6 +33,7 @@ public:
     QAction *actionChecked_In_Students;
     QAction *actionAdd_New_Class;
     QAction *actionRemove_Class;
+    QAction *actionSave_logs;
     QWidget *centralwidget;
     QLabel *CheckInOptionsLabel;
     QGroupBox *groupBox;
@@ -66,6 +67,8 @@ public:
         actionAdd_New_Class->setObjectName(QString::fromUtf8("actionAdd_New_Class"));
         actionRemove_Class = new QAction(HomePageView);
         actionRemove_Class->setObjectName(QString::fromUtf8("actionRemove_Class"));
+        actionSave_logs = new QAction(HomePageView);
+        actionSave_logs->setObjectName(QString::fromUtf8("actionSave_logs"));
         centralwidget = new QWidget(HomePageView);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setMaximumSize(QSize(16777215, 507));
@@ -166,6 +169,7 @@ public:
         menubar->addAction(menuLab_Check_in_System->menuAction());
         menubar->addAction(menuEdit->menuAction());
         menuEdit->addSeparator();
+        menuEdit->addAction(actionSave_logs);
 
         retranslateUi(HomePageView);
 
@@ -179,6 +183,7 @@ public:
         actionChecked_In_Students->setText(QApplication::translate("HomePageView", "Checked In Students", nullptr));
         actionAdd_New_Class->setText(QApplication::translate("HomePageView", "Add New Class", nullptr));
         actionRemove_Class->setText(QApplication::translate("HomePageView", "Remove Class", nullptr));
+        actionSave_logs->setText(QApplication::translate("HomePageView", "Save logs...", nullptr));
         CheckInOptionsLabel->setText(QApplication::translate("HomePageView", "Lab Check-in System", nullptr));
         groupBox->setTitle(QApplication::translate("HomePageView", "Signed-in Students", nullptr));
         QTableWidgetItem *___qtablewidgetitem = SignedInTable->horizontalHeaderItem(0);

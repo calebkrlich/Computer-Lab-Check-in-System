@@ -233,6 +233,7 @@
      <string>Edit</string>
     </property>
     <addaction name="separator"/>
+    <addaction name="actionSave_logs"/>
    </widget>
    <addaction name="menuLab_Check_in_System"/>
    <addaction name="menuEdit"/>
@@ -256,6 +257,11 @@
   <action name="actionRemove_Class">
    <property name="text">
     <string>Remove Class</string>
+   </property>
+  </action>
+  <action name="actionSave_logs">
+   <property name="text">
+    <string>Save logs...</string>
    </property>
   </action>
  </widget>

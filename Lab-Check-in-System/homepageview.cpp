@@ -4,6 +4,7 @@
 #include "studentinformation.h"
 #include "tablemethods.h"
 #include "databasecontrollersingleton.h"
+#include "filecreator.h"
 
 #include <QtSql>
 #include <QDateTime>
@@ -143,4 +144,9 @@ void HomePageView::StudentToRemove(QString studentID)
 void HomePageView::EventNewWindowToConnect(CheckInManualView* newView)
 {
     QObject::connect(newView,&CheckInManualView::EventStudentCheckedIn,this,&HomePageView::newStudentToAdd);
+}
+
+void HomePageView::on_actionSave_logs_triggered()
+{
+    //Run subroutine to save file
 }
