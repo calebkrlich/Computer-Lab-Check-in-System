@@ -30,8 +30,20 @@ void AuthorizationView::setupUI()
 
 void AuthorizationView::on_AuthorizeButton_clicked()
 {
-    DatabaseControllerSingleton::getInstance()->postStudent(studentToAuthorize);
-    this->done(QDialog::Accepted);
+    DatabaseControllerSingleton* db = DatabaseControllerSingleton::getInstance();
+
+    if(!db->checkAuthorizer(ui->IDLineEdit->text(),ui->PinLineEdit->text()))
+    {
+        QMessageBox invalidMessageBox;
+        invalidMessageBox.setText("Invalid ID or PIN");
+        invalidMessageBox.setWindowTitle("Warning");
+        invalidMessageBox.setIcon(QMessageBox::Warning);
+        invalidMessageBox.exec();
+    }
+    else
+    {
+        this->done(QDialog::Accepted);
+    }
 }
 
 void AuthorizationView::on_CancelButton_clicked()

@@ -119,7 +119,7 @@
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>161</width>
+       <width>168</width>
        <height>131</height>
       </rect>
      </property>
@@ -227,6 +227,7 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -262,6 +263,11 @@
   <action name="actionSave_logs">
    <property name="text">
     <string>Save logs...</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>

@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "databasecontrollersingleton.h"
 #include "studentinformation.h"
+#include <QMessageBox>
 
 namespace Ui {
 class AuthorizationView;

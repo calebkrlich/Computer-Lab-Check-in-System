@@ -49,10 +49,12 @@ public:
     QList<StudentInformation> getStudentsCheckedIn();
     QList<EventInformation> getActiveEvents();
     int getTableRowCount(QString table);
+    QList<QString> getLogs(QString fromTime, QString toTime);
 
     //Checkers
     bool checkIfStudentExists(QString ID);
     bool checkIfStudentSignedIn(QString ID);
+    bool checkAuthorizer(QString ID,QString PIN);
 
 
 

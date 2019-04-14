@@ -5,6 +5,7 @@
 #include <QTableWidgetItem>
 #include <QList>
 #include <QString>
+#include "databasecontrollersingleton.h"
 
 namespace TableOperators
 {

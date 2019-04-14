@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_HomePageView_t {
-    QByteArrayData data[18];
-    char stringdata0[295];
+    QByteArrayData data[19];
+    char stringdata0[319];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -48,7 +48,8 @@ QT_MOC_LITERAL(13, 205, 9), // "studentID"
 QT_MOC_LITERAL(14, 215, 23), // "EventNewWindowToConnect"
 QT_MOC_LITERAL(15, 239, 18), // "CheckInManualView*"
 QT_MOC_LITERAL(16, 258, 7), // "newView"
-QT_MOC_LITERAL(17, 266, 28) // "on_actionSave_logs_triggered"
+QT_MOC_LITERAL(17, 266, 28), // "on_actionSave_logs_triggered"
+QT_MOC_LITERAL(18, 295, 23) // "on_actionExit_triggered"
 
     },
     "HomePageView\0StudentListChange\0\0"
@@ -59,7 +60,8 @@ QT_MOC_LITERAL(17, 266, 28) // "on_actionSave_logs_triggered"
     "StudentInformation\0student\0StudentToRemove\0"
     "studentID\0EventNewWindowToConnect\0"
     "CheckInManualView*\0newView\0"
-    "on_actionSave_logs_triggered"
+    "on_actionSave_logs_triggered\0"
+    "on_actionExit_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -69,7 +71,7 @@ static const uint qt_meta_data_HomePageView[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -77,17 +79,18 @@ static const uint qt_meta_data_HomePageView[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   59,    2, 0x06 /* Public */,
+       1,    0,   64,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   60,    2, 0x08 /* Private */,
-       4,    0,   61,    2, 0x08 /* Private */,
-       5,    0,   62,    2, 0x08 /* Private */,
-       6,    1,   63,    2, 0x08 /* Private */,
-       9,    1,   66,    2, 0x08 /* Private */,
-      12,    1,   69,    2, 0x08 /* Private */,
-      14,    1,   72,    2, 0x08 /* Private */,
-      17,    0,   75,    2, 0x08 /* Private */,
+       3,    0,   65,    2, 0x08 /* Private */,
+       4,    0,   66,    2, 0x08 /* Private */,
+       5,    0,   67,    2, 0x08 /* Private */,
+       6,    1,   68,    2, 0x08 /* Private */,
+       9,    1,   71,    2, 0x08 /* Private */,
+      12,    1,   74,    2, 0x08 /* Private */,
+      14,    1,   77,    2, 0x08 /* Private */,
+      17,    0,   80,    2, 0x08 /* Private */,
+      18,    0,   81,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -100,6 +103,7 @@ static const uint qt_meta_data_HomePageView[] = {
     QMetaType::Void, 0x80000000 | 10,   11,
     QMetaType::Void, QMetaType::QString,   13,
     QMetaType::Void, 0x80000000 | 15,   16,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -120,6 +124,7 @@ void HomePageView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 6: _t->StudentToRemove((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 7: _t->EventNewWindowToConnect((*reinterpret_cast< CheckInManualView*(*)>(_a[1]))); break;
         case 8: _t->on_actionSave_logs_triggered(); break;
+        case 9: _t->on_actionExit_triggered(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -174,13 +179,13 @@ int HomePageView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

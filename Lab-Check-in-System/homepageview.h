@@ -8,6 +8,7 @@
 #include "addeventview.h"
 #include "eventinformation.h"
 #include "studentinformation.h"
+#include "savelogsview.h"
 
 namespace Ui {
 class HomePageView;
@@ -40,6 +41,8 @@ private slots:
     void EventNewWindowToConnect(CheckInManualView* newView);
 
     void on_actionSave_logs_triggered();
+
+    void on_actionExit_triggered();
 
 private:
     Ui::HomePageView *ui;

@@ -139,6 +139,36 @@ QList<EventInformation> DatabaseControllerSingleton::getActiveEvents()
     return eventsToReturn;
 }
 
+int DatabaseControllerSingleton::getTableRowCount(QString table)
+{
+    QSqlQuery query;
+
+    query.exec("SELECT COUNT(*) FROM " + table);
+    query.next();
+
+    return query.value(0).toInt();
+}
+
+QList<QString> DatabaseControllerSingleton::getLogs(QString fromTime, QString toTime)
+{
+    QList<QString> listToReturn;
+    QSqlQuery query;
+
+    query.exec("SELECT logs.YSU_ID,students.NAME_FIRST,students.NAME_LAST,logs.TIME_CHECK_IN,logs.TIME_CHECK_OUT FROM lab_check_in.logs,lab_check_in.students where logs.YSU_ID = students.YSU_ID and logs.TIME_CHECK_IN between '" + fromTime + "' and '" + toTime + "';");
+
+    while(query.next())
+    {
+        QString temp;
+
+        temp += query.value(0).toString() + ",";
+        temp += query.value(1).toString() + ",";
+        temp += query.value(2).toString() + ",";
+        temp += query.value(3).toString();
+
+        listToReturn.append(temp);
+    }
+    return listToReturn;
+}
 
 /*
  * Checks to see if student exists in the database
@@ -169,12 +199,17 @@ bool DatabaseControllerSingleton::checkIfStudentSignedIn(QString ID)
     return false;
 }
 
-int DatabaseControllerSingleton::getTableRowCount(QString table)
+bool DatabaseControllerSingleton::checkAuthorizer(QString ID, QString PIN)
 {
     QSqlQuery query;
 
-    query.exec("SELECT COUNT(*) FROM " + table);
-    query.next();
+    query.exec("select * from faculty where YSU_ID = '" + ID +
+               "' and PIN_NUM = '" + PIN + "';");
 
-    return query.value(0).toInt();
+    qInfo() << ("select * from faculty where YSU_ID = '" + ID +
+               "' and PIN_NUM = '" + PIN + "';");
+
+    if(query.next())
+        return true;
+    return false;
 }

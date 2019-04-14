@@ -34,6 +34,7 @@ public:
     QAction *actionAdd_New_Class;
     QAction *actionRemove_Class;
     QAction *actionSave_logs;
+    QAction *actionExit;
     QWidget *centralwidget;
     QLabel *CheckInOptionsLabel;
     QGroupBox *groupBox;
@@ -69,6 +70,8 @@ public:
         actionRemove_Class->setObjectName(QString::fromUtf8("actionRemove_Class"));
         actionSave_logs = new QAction(HomePageView);
         actionSave_logs->setObjectName(QString::fromUtf8("actionSave_logs"));
+        actionExit = new QAction(HomePageView);
+        actionExit->setObjectName(QString::fromUtf8("actionExit"));
         centralwidget = new QWidget(HomePageView);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setMaximumSize(QSize(16777215, 507));
@@ -105,7 +108,7 @@ public:
         groupBox_2->setGeometry(QRect(10, 100, 181, 251));
         verticalLayoutWidget = new QWidget(groupBox_2);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 30, 161, 131));
+        verticalLayoutWidget->setGeometry(QRect(10, 30, 168, 131));
         gridLayout = new QGridLayout(verticalLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -168,6 +171,7 @@ public:
 
         menubar->addAction(menuLab_Check_in_System->menuAction());
         menubar->addAction(menuEdit->menuAction());
+        menuLab_Check_in_System->addAction(actionExit);
         menuEdit->addSeparator();
         menuEdit->addAction(actionSave_logs);
 
@@ -184,6 +188,7 @@ public:
         actionAdd_New_Class->setText(QApplication::translate("HomePageView", "Add New Class", nullptr));
         actionRemove_Class->setText(QApplication::translate("HomePageView", "Remove Class", nullptr));
         actionSave_logs->setText(QApplication::translate("HomePageView", "Save logs...", nullptr));
+        actionExit->setText(QApplication::translate("HomePageView", "Exit", nullptr));
         CheckInOptionsLabel->setText(QApplication::translate("HomePageView", "Lab Check-in System", nullptr));
         groupBox->setTitle(QApplication::translate("HomePageView", "Signed-in Students", nullptr));
         QTableWidgetItem *___qtablewidgetitem = SignedInTable->horizontalHeaderItem(0);

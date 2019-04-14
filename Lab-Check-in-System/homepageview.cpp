@@ -150,4 +150,12 @@ void HomePageView::EventNewWindowToConnect(CheckInManualView* newView)
 void HomePageView::on_actionSave_logs_triggered()
 {
     //Run subroutine to save file
+    SaveLogsView* saveLogsView = new SaveLogsView();
+    saveLogsView->setModal(true);
+    saveLogsView->exec();
+}
+
+void HomePageView::on_actionExit_triggered()
+{
+    this->close();
 }

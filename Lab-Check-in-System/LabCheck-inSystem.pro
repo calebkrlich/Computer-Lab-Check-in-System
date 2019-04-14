@@ -21,7 +21,8 @@ SOURCES += \
     addeventview.cpp \
     databasecontrollersingleton.cpp \
     checkinmanualview.cpp \
-    authorizationview.cpp
+    authorizationview.cpp \
+    savelogsview.cpp
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -45,7 +46,8 @@ HEADERS += \
     eventinformation.h \
     databasecontrollersingleton.h \
     checkinmanualview.h \
-    authorizationview.h
+    authorizationview.h \
+    savelogsview.h
 
 FORMS += \
     checkinview.ui \
@@ -53,7 +55,8 @@ FORMS += \
     checkoutview.ui \
     addeventview.ui \
     checkinmanualview.ui \
-    authorizationview.ui
+    authorizationview.ui \
+    savelogsview.ui
 
 DISTFILES += \
     logo_1.png.jpg
