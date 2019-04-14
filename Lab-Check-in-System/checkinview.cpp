@@ -23,49 +23,90 @@ CheckInView::~CheckInView()
 void CheckInView::on_CheckInButton_clicked()
 {
     QString cardText = ui->CardInputLineEdit->text();
-
     StudentInformation parsedCardInfo;
-
     CardParser cardParser = CardParser();
     bool validCard = cardParser.Parse(cardText.toLatin1());
+    bool studentAuthorized = false;
+
     parsedCardInfo = cardParser.getInfo();
 
 
+    //TODO: refactor to turn the database calls to one method
+    //      so it can be reused on other parts
     if(validCard)
     {
         //if the student is a first time check in
         if(!DatabaseControllerSingleton::getInstance()->
                 checkIfStudentExists(parsedCardInfo.ID))
         {
+            //Open up view for authorization
+            authorizationView = new AuthorizationView;
+            authorizationView->setStudent(parsedCardInfo);
+            authorizationView->setupUI();
+            authorizationView->exec();
+            studentAuthorized = authorizationView->result();
+            qInfo() << studentAuthorized;
+
             //add them to the student database
-            DatabaseControllerSingleton::getInstance()->postStudent(parsedCardInfo);
+            //DatabaseControllerSingleton::getInstance()->postStudent(parsedCardInfo);
+        }
+        else {
+            studentAuthorized = true;
         }
 
         //if the student is not signed in
-        if(!DatabaseControllerSingleton::getInstance()->checkIfStudentSignedIn(parsedCardInfo.ID))
+        if(!DatabaseControllerSingleton::getInstance()->
+                checkIfStudentSignedIn(parsedCardInfo.ID) &&
+                studentAuthorized)
         {
-            if(DatabaseControllerSingleton::getInstance()->postLog(parsedCardInfo))
+            if(DatabaseControllerSingleton::getInstance()->postLog(parsedCardInfo)) //Student was sucessfully added to database.
             {
                 parsedCardInfo.checkInTime = QDateTime::currentDateTime().toString();
                 emit(EventStudentCheckedIn(parsedCardInfo));
+
                 QMessageBox conformationBox;                    //Creates a notification popup for user
-                conformationBox.setText("Student signed-in");
+                conformationBox.setText("Student was sucessfully signed-in");
+                conformationBox.setWindowTitle("Sucess!");
+                conformationBox.setIcon(QMessageBox::Information);
                 conformationBox.exec();
                 this->close();
             }
-            else
+            else    //couldn't access database
             {
-                qInfo() << "Database error";
+                QMessageBox databaseErrorMessageBox;
+                databaseErrorMessageBox.setText("There was a problem accessing database.");
+                databaseErrorMessageBox.setWindowTitle("Warning!");
+                databaseErrorMessageBox.setIcon(QMessageBox::Critical);
+                databaseErrorMessageBox.setModal(true);
+                QApplication::beep();
+                databaseErrorMessageBox.exec();
             }
         }
-        else
+        else //Student was already signed in
         {
-            QMessageBox alreadySignedInMessageBox;
-            alreadySignedInMessageBox.setText("Already signed in!");
-            alreadySignedInMessageBox.exec();
+            if(studentAuthorized)
+            {
+                QMessageBox alreadySignedInMessageBox;
+                alreadySignedInMessageBox.setText("Already signed in!");
+                alreadySignedInMessageBox.setWindowTitle("Warning!");
+                alreadySignedInMessageBox.setIcon(QMessageBox::Warning);
+                QApplication::beep();
+                alreadySignedInMessageBox.exec();
+                ui->CardInputLineEdit->clear();
+            }
+
+            else
+            {
+                QMessageBox notAuthorizedMessageBox;
+                notAuthorizedMessageBox.setText("Student was not authorized to sign in");
+                notAuthorizedMessageBox.setWindowTitle("Warning!");
+                notAuthorizedMessageBox.setIcon(QMessageBox::Warning);
+                notAuthorizedMessageBox.exec();
+                ui->CardInputLineEdit->clear();
+            }
         }
     }
-    else
+    else    //Problem reading card/ invalid card
     {
         ui->SwipeCardLabel->setText("Invalid Card, Swipe Again");
         ui->CardInputLineEdit->clear();

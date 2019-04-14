@@ -6,10 +6,10 @@ release/checkoutview.o
 release/addeventview.o
 release/databasecontrollersingleton.o
 release/checkinmanualview.o
-release/filecreator.o
+release/authorizationview.o
 release/moc_checkinview.o
 release/moc_homepageview.o
 release/moc_checkoutview.o
 release/moc_addeventview.o
 release/moc_checkinmanualview.o
-release/moc_filecreator.o
+release/moc_authorizationview.o

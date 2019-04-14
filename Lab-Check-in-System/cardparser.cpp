@@ -30,6 +30,8 @@ bool CardParser::Parse(QString cardData)
 
     QStringList garbageRemovalSplit = cardData.split('?');
 
+    qInfo() << garbageRemovalSplit;
+
     QStringList splitCardData = garbageRemovalSplit[0].split("\\");
 
     qInfo() << splitCardData.toStdList();
@@ -43,7 +45,7 @@ bool CardParser::Parse(QString cardData)
         cardInfo.status = "Student Faculty";
 
     //YSU NUMBER
-    cardInfo.ID = splitCardData[1].toLatin1();
+    cardInfo.ID = garbageRemovalSplit[2].mid(2).toLatin1();
 
     //Last Name
     cardInfo.lastName = splitCardData[2].toLatin1();

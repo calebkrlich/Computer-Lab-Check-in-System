@@ -24,7 +24,7 @@ void CheckInManualView::on_CheckInButton_clicked()
     StudentInformation student;
 
     //get all the student infomation
-    student.ID = ui->ySUIDLineEdit->text() + "0";
+    student.ID = ui->ySUIDLineEdit->text();
     student.firstName = ui->nameLineEdit->text().toUpper();
     student.lastName = ui->lastNameLineEdit->text().toUpper();
     student.birthday = ui->birthdayDateEdit->date().toString("MM/dd/yyyy");

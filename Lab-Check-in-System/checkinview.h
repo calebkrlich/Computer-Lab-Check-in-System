@@ -6,6 +6,7 @@
 #include "checkinmanualview.h"
 #include "studentinformation.h"
 #include "databasecontrollersingleton.h"
+#include "authorizationview.h"
 
 namespace Ui {
 class CheckInView;
@@ -22,6 +23,7 @@ public:
 private:
     Ui::CheckInView *ui;
     CheckInManualView *checkInManualView;
+    AuthorizationView *authorizationView;
 
 signals:
     void EventStudentCheckedIn(StudentInformation student);

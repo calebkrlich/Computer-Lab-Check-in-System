@@ -4,7 +4,7 @@
 #include "studentinformation.h"
 #include "tablemethods.h"
 #include "databasecontrollersingleton.h"
-#include "filecreator.h"
+//#include "filecreator.h"
 
 #include <QtSql>
 #include <QDateTime>
@@ -139,6 +139,7 @@ void HomePageView::newStudentToAdd(StudentInformation student)
 void HomePageView::StudentToRemove(QString studentID)
 {
     TableOperators::removeRowWithValue(ui->SignedInTable,studentID);   //Delete the student from the row
+    qInfo() << "Student : " << studentID << " removed";
 }
 
 void HomePageView::EventNewWindowToConnect(CheckInManualView* newView)

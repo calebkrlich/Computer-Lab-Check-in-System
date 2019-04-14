@@ -102,10 +102,10 @@ public:
         SignedInTable->setProperty("showDropIndicator", QVariant(true));
         groupBox_2 = new QGroupBox(centralwidget);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(0, 90, 191, 231));
+        groupBox_2->setGeometry(QRect(10, 100, 181, 251));
         verticalLayoutWidget = new QWidget(groupBox_2);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 20, 180, 141));
+        verticalLayoutWidget->setGeometry(QRect(10, 30, 161, 131));
         gridLayout = new QGridLayout(verticalLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
