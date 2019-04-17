@@ -63,7 +63,13 @@ bool CardParser::Parse(QString cardData)
     else if(cardInfo.status == "Student" ||
             cardInfo.status == "Student Faculty")
     {
-        cardInfo.birthday = splitCardData[5].toLatin1();
+        QString cleanedDate;
+        QDate birthday = QDate::fromString(splitCardData[5],"MM/dd/yyyy");
+
+        qInfo() << birthday.toString();
+
+        cleanedDate = birthday.toString("yyyy-MM-dd");
+        cardInfo.birthday = cleanedDate;
         cardInfo.registrationDate = splitCardData[6].toLatin1();
     }
 

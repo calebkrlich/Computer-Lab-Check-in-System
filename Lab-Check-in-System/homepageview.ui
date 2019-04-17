@@ -235,6 +235,8 @@
     </property>
     <addaction name="separator"/>
     <addaction name="actionSave_logs"/>
+    <addaction name="separator"/>
+    <addaction name="actionAdd_Faculty_Member"/>
    </widget>
    <addaction name="menuLab_Check_in_System"/>
    <addaction name="menuEdit"/>
@@ -268,6 +270,11 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionAdd_Faculty_Member">
+   <property name="text">
+    <string>Add Faculty Member...</string>
    </property>
   </action>
  </widget>

@@ -37,7 +37,7 @@ void CheckInView::on_CheckInButton_clicked()
     {
         //if the student is a first time check in
         if(!DatabaseControllerSingleton::getInstance()->
-                checkIfStudentExists(parsedCardInfo.ID))
+                checkIfStudentExists(parsedCardInfo))
         {
             //Open up view for authorization
             authorizationView = new AuthorizationView;

@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include "studentinformation.h"
+#include <QDate>
 
 class CardParser
 {

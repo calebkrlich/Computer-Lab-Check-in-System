@@ -27,11 +27,11 @@ void CheckInManualView::on_CheckInButton_clicked()
     student.ID = ui->ySUIDLineEdit->text();
     student.firstName = ui->nameLineEdit->text().toUpper();
     student.lastName = ui->lastNameLineEdit->text().toUpper();
-    student.birthday = ui->birthdayDateEdit->date().toString("MM/dd/yyyy");
+    student.birthday = ui->birthdayDateEdit->date().toString("yyyy-MM-dd");
 
     //check to see if the student exists in the file
     if(DatabaseControllerSingleton::getInstance()->
-            checkIfStudentExists(student.ID))
+            checkIfStudentExists(student))
     {
         if(DatabaseControllerSingleton::getInstance()->postLog(student))
         {

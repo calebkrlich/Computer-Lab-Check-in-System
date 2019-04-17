@@ -9,10 +9,12 @@ bool DatabaseControllerSingleton::postStudent(StudentInformation student)
     QSqlQuery queryToExecute;
 
     //gross representation of a query
-    queryString = ("INSERT INTO students (YSU_ID,NAME_FIRST,NAME_LAST) VALUES ('" +
-                   student.ID.toLatin1() + "'" + "," + "'" +
-                   student.firstName.toLatin1() + "'" + "," + "'" +
-                   student.lastName.toLatin1() + "'" + ");");
+    queryString = ("INSERT INTO students (YSU_ID,NAME_FIRST,NAME_LAST,NAME_MIDDLE,BIRTHDAY) VALUES ('" +
+                   student.ID.toLatin1() + "','" +
+                   student.firstName.toLatin1() + "','" +
+                   student.lastName.toLatin1() + "','" +
+                   student.middleInitial + "','" +
+                   student.birthday + "');");
 
     qInfo() << queryString;
 
@@ -173,11 +175,13 @@ QList<QString> DatabaseControllerSingleton::getLogs(QString fromTime, QString to
 /*
  * Checks to see if student exists in the database
  */
-bool DatabaseControllerSingleton::checkIfStudentExists(QString ID)
+bool DatabaseControllerSingleton::checkIfStudentExists(StudentInformation student)
 {
     QSqlQuery query;
 
-    query.exec("select * from students where YSU_ID = " + ID.toLatin1() + ";");
+    query.exec("select * from students where YSU_ID = '" + student.ID +
+               "'and NAME_FIRST = '" + student.firstName + "' and NAME_LAST = '" +
+               student.lastName + "' and BIRTHDAY = '" + student.birthday + "';");
 
     if(query.next())
     {

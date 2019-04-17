@@ -58,10 +58,10 @@ public:
     {
         if (SaveLogsView->objectName().isEmpty())
             SaveLogsView->setObjectName(QString::fromUtf8("SaveLogsView"));
-        SaveLogsView->resize(292, 426);
+        SaveLogsView->resize(204, 426);
         gridLayoutWidget = new QWidget(SaveLogsView);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(9, 20, 261, 80));
+        gridLayoutWidget->setGeometry(QRect(9, 20, 181, 80));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -77,20 +77,22 @@ public:
 
         label = new QLabel(gridLayoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
+        label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout->addWidget(label, 0, 0, 1, 1);
 
         label_2 = new QLabel(gridLayoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout->addWidget(label_2, 1, 0, 1, 1);
 
         groupBox = new QGroupBox(SaveLogsView);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(10, 110, 261, 121));
+        groupBox->setGeometry(QRect(10, 110, 181, 121));
         gridLayoutWidget_2 = new QWidget(groupBox);
         gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(10, 30, 241, 80));
+        gridLayoutWidget_2->setGeometry(QRect(10, 30, 151, 80));
         gridLayout_2 = new QGridLayout(gridLayoutWidget_2);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -116,10 +118,10 @@ public:
 
         groupBox_2 = new QGroupBox(SaveLogsView);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(10, 240, 261, 131));
+        groupBox_2->setGeometry(QRect(10, 240, 181, 131));
         horizontalLayoutWidget = new QWidget(groupBox_2);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(10, 30, 241, 41));
+        horizontalLayoutWidget->setGeometry(QRect(10, 30, 151, 41));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -135,7 +137,7 @@ public:
 
         horizontalLayoutWidget_2 = new QWidget(groupBox_2);
         horizontalLayoutWidget_2->setObjectName(QString::fromUtf8("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(10, 80, 241, 31));
+        horizontalLayoutWidget_2->setGeometry(QRect(10, 80, 151, 31));
         horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -151,7 +153,7 @@ public:
 
         horizontalLayoutWidget_3 = new QWidget(SaveLogsView);
         horizontalLayoutWidget_3->setObjectName(QString::fromUtf8("horizontalLayoutWidget_3"));
-        horizontalLayoutWidget_3->setGeometry(QRect(10, 380, 261, 31));
+        horizontalLayoutWidget_3->setGeometry(QRect(10, 380, 181, 31));
         horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_3);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);

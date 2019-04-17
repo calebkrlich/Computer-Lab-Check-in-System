@@ -52,7 +52,7 @@ public:
     QList<QString> getLogs(QString fromTime, QString toTime);
 
     //Checkers
-    bool checkIfStudentExists(QString ID);
+    bool checkIfStudentExists(StudentInformation student);
     bool checkIfStudentSignedIn(QString ID);
     bool checkAuthorizer(QString ID,QString PIN);
 

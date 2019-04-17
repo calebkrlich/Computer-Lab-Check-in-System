@@ -44,6 +44,8 @@ private slots:
 
     void on_actionExit_triggered();
 
+    void on_actionAdd_Faculty_Member_triggered();
+
 private:
     Ui::HomePageView *ui;
     CheckInView *checkInView;

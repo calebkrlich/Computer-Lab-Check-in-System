@@ -159,3 +159,9 @@ void HomePageView::on_actionExit_triggered()
 {
     this->close();
 }
+
+//TODO: THIS
+void HomePageView::on_actionAdd_Faculty_Member_triggered()
+{
+
+}

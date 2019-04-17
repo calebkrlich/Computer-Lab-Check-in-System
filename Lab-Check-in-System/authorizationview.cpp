@@ -43,6 +43,7 @@ void AuthorizationView::on_AuthorizeButton_clicked()
     else
     {
         this->done(QDialog::Accepted);
+        db->postStudent(studentToAuthorize);
     }
 }
 
