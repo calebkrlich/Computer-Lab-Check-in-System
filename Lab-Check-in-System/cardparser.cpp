@@ -6,25 +6,43 @@ CardParser::CardParser()
 }
 
 QString CardParser::getStatus() { return cardInfo.status; }
-unsigned int CardParser::getID() { return cardInfo.ID; }
+QString CardParser::getID() { return cardInfo.ID; }
 QString CardParser::getFirstname() { return cardInfo.firstName; }
 QString CardParser::getLastname() { return cardInfo.lastName; }
 QString CardParser::getMiddleInitial() { return cardInfo.middleInitial; }
 QString CardParser::getBirthday() { return cardInfo.birthday; }
 QString CardParser::getRegistrationDate() { return cardInfo.registrationDate; }
 
-CardInfo CardParser::getInfo() { return cardInfo; }
+StudentInformation CardParser::getInfo() { return cardInfo; }
 
+
+//NEEDS A REGULAR EXPRESSTION TO TEST
+//FULL MATCH REGEX
+//((%S)|(%X)|(%E))(\\)([0-9]*)(\\)([A-Z]*)(\\)([A-Z]*)(\\)([A-Z]*)(\\)(([0-9]*)(\/)([0-9]*)(\/)([0-9]*)?)(((\\)([0-9]+)(\/)([0-9]+)(\/)([0-9]+)(\?))|(\?))(\@)([0-9]+)(\?&Y)([0-9]+)(\?)
 bool CardParser::Parse(QString cardData)
 {
+
+    QRegularExpression regexCardMatch("((%S)|(%X)|(%E))(\\\\)([0-9]*)(\\\\)([A-Z]*)(\\\\)([A-Z]*)(\\\\)([A-Z]*)(\\\\)(([0-9]*)(\\/)([0-9]*)(/)([0-9]*)?)(((\\\\)([0-9]+)(/)([0-9]+)(/)([0-9]+)(\\?))|(\\?))(\\@)([0-9]+)(\\?&Y)([0-9]+)(\\?)");
+
+    QRegularExpressionMatch regexMatch = regexCardMatch.match(cardData);
+
+    if(!regexMatch.hasMatch())
+    {
+        return false;
+    }
+
+    /*
     //Check if the input is valid card Info
     if(cardData.contains(';') || cardData[0].toLatin1() != '%'
            || !cardData.contains('@'))
     {
         return false;
     }
+    */
 
     QStringList garbageRemovalSplit = cardData.split('?');
+
+    qInfo() << garbageRemovalSplit;
 
     QStringList splitCardData = garbageRemovalSplit[0].split("\\");
 
@@ -39,7 +57,7 @@ bool CardParser::Parse(QString cardData)
         cardInfo.status = "Student Faculty";
 
     //YSU NUMBER
-    cardInfo.ID = splitCardData[1].toUInt();
+    cardInfo.ID = garbageRemovalSplit[2].mid(2).toLatin1();
 
     //Last Name
     cardInfo.lastName = splitCardData[2].toLatin1();
@@ -57,7 +75,13 @@ bool CardParser::Parse(QString cardData)
     else if(cardInfo.status == "Student" ||
             cardInfo.status == "Student Faculty")
     {
-        cardInfo.birthday = splitCardData[5].toLatin1();
+        QString cleanedDate;
+        QDate birthday = QDate::fromString(splitCardData[5],"MM/dd/yyyy");
+
+        qInfo() << birthday.toString();
+
+        cleanedDate = birthday.toString("yyyy-MM-dd");
+        cardInfo.birthday = cleanedDate;
         cardInfo.registrationDate = splitCardData[6].toLatin1();
     }
 

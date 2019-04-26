@@ -1,6 +1,5 @@
 #include "checkinview.h"
 #include "ui_checkinview.h"
-#include "databasecontroller.h"
 
 CheckInView::CheckInView(QWidget *parent) :
     QDialog(parent),
@@ -24,62 +23,90 @@ CheckInView::~CheckInView()
 void CheckInView::on_CheckInButton_clicked()
 {
     QString cardText = ui->CardInputLineEdit->text();
-    CardInfo parsedCardInfo;
-
+    StudentInformation parsedCardInfo;
     CardParser cardParser = CardParser();
     bool validCard = cardParser.Parse(cardText.toLatin1());
+    bool studentAuthorized = false;
+
     parsedCardInfo = cardParser.getInfo();
 
+
+    //TODO: refactor to turn the database calls to one method
+    //      so it can be reused on other parts
     if(validCard)
     {
-        DatabaseController db("QMYSQL","localhost","lab_check_in","root","q1w2e3r4");           //This needs to be it's own class
-        qInfo() << db.openDatabase();
-
-        //Add student to database if they haven't been added before
-        QSqlQuery result = db.getStudentFromID(QString::number(parsedCardInfo.ID));
-        bool newStudent = true;
-
-        while(result.next())
+        //if the student is a first time check in
+        if(!DatabaseControllerSingleton::getInstance()->
+                checkIfStudentExists(parsedCardInfo))
         {
-            qInfo() << result.value(0);
-            newStudent = false;
+            //Open up view for authorization
+            authorizationView = new AuthorizationView;
+            authorizationView->setStudent(parsedCardInfo);
+            authorizationView->setupUI();
+            authorizationView->exec();
+            studentAuthorized = authorizationView->result();
+            qInfo() << studentAuthorized;
+
+            //add them to the student database
+            //DatabaseControllerSingleton::getInstance()->postStudent(parsedCardInfo);
+        }
+        else {
+            studentAuthorized = true;
         }
 
-        if(newStudent)
+        //if the student is not signed in
+        if(!DatabaseControllerSingleton::getInstance()->
+                checkIfStudentSignedIn(parsedCardInfo.ID) &&
+                studentAuthorized)
         {
-            qInfo() << "NEW STUDENT";
-            db.postStudent(QString::number(parsedCardInfo.ID),
-                           parsedCardInfo.firstName,
-                           parsedCardInfo.lastName);
+            if(DatabaseControllerSingleton::getInstance()->postLog(parsedCardInfo)) //Student was sucessfully added to database.
+            {
+                parsedCardInfo.checkInTime = QDateTime::currentDateTime().toString();
+                emit(EventStudentCheckedIn(parsedCardInfo));
+
+                QMessageBox conformationBox;                    //Creates a notification popup for user
+                conformationBox.setText("Student was sucessfully signed-in");
+                conformationBox.setWindowTitle("Sucess!");
+                conformationBox.setIcon(QMessageBox::Information);
+                conformationBox.exec();
+                this->close();
+            }
+            else    //couldn't access database
+            {
+                QMessageBox databaseErrorMessageBox;
+                databaseErrorMessageBox.setText("There was a problem accessing database.");
+                databaseErrorMessageBox.setWindowTitle("Warning!");
+                databaseErrorMessageBox.setIcon(QMessageBox::Critical);
+                databaseErrorMessageBox.setModal(true);
+                QApplication::beep();
+                databaseErrorMessageBox.exec();
+            }
         }
-
-        int uid = db.getRowCount("logs") + 1;   //create a unique id from the last row's id
-        if(db.postLog(uid, QString::number(parsedCardInfo.ID), QDateTime::currentDateTime()))
+        else //Student was already signed in
         {
-            StudentInformation studentInfoToEmit;
-            studentInfoToEmit.ID = parsedCardInfo.ID;
-            studentInfoToEmit.firstName = parsedCardInfo.firstName;
-            studentInfoToEmit.lastName = parsedCardInfo.lastName;
-            studentInfoToEmit.birthday = parsedCardInfo.birthday;
-            studentInfoToEmit.middleInitial = parsedCardInfo.middleInitial;
+            if(studentAuthorized)
+            {
+                QMessageBox alreadySignedInMessageBox;
+                alreadySignedInMessageBox.setText("Already signed in!");
+                alreadySignedInMessageBox.setWindowTitle("Warning!");
+                alreadySignedInMessageBox.setIcon(QMessageBox::Warning);
+                QApplication::beep();
+                alreadySignedInMessageBox.exec();
+                ui->CardInputLineEdit->clear();
+            }
 
-            studentInfoToEmit.checkInTime = "HELP ME"; //Testing weird bug
-            studentInfoToEmit.checkOutTime = "WEAD";
-
-            emit(EventStudentCheckedIn(studentInfoToEmit)); //emit signal to update homepage UI
-
-            QMessageBox conformationBox;                    //Creates a notification popup for user
-            conformationBox.setText("Student signed-in");
-            conformationBox.exec();
-            this->close();
-        }
-        else
-        {
-            qInfo() << "Database error";
+            else
+            {
+                QMessageBox notAuthorizedMessageBox;
+                notAuthorizedMessageBox.setText("Student was not authorized to sign in");
+                notAuthorizedMessageBox.setWindowTitle("Warning!");
+                notAuthorizedMessageBox.setIcon(QMessageBox::Warning);
+                notAuthorizedMessageBox.exec();
+                ui->CardInputLineEdit->clear();
+            }
         }
     }
-
-    else
+    else    //Problem reading card/ invalid card
     {
         ui->SwipeCardLabel->setText("Invalid Card, Swipe Again");
         ui->CardInputLineEdit->clear();
@@ -94,7 +121,10 @@ void CheckInView::on_CancelButton_clicked()
 void CheckInView::on_ManualCheckInButton_clicked()
 {
     this->close();
-    checkInManualView = new CheckIManualView(this);
+    checkInManualView = new CheckInManualView(this);
     checkInManualView->show();
+
+    //Tell the homepage to connect and listen to new page
+    emit(EventConnectToNewManualView(checkInManualView));
 }
 

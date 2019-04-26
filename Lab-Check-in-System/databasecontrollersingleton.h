@@ -4,8 +4,9 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include "studentinformation.h"
+#include "eventinformation.h"
 
-#define DATABASE_TYPE "MYSQL"
+#define DATABASE_TYPE "QMYSQL"
 #define DATABASE_HOST_NAME "localhost"
 #define DATABASE_NAME "lab_check_in"
 #define DATABASE_USER_NAME "root"
@@ -17,7 +18,7 @@ class DatabaseControllerSingleton
 public:
     static DatabaseControllerSingleton* getInstance()
     {
-        if(instance == nullptr)
+        if(!instance)
         {
             instance = new DatabaseControllerSingleton();
             return instance;
@@ -31,32 +32,41 @@ public:
         database.close();
     }
 
+    //Database Connection
+    bool connectToDatabase();
+
     //Posters
     bool postStudent(StudentInformation student);
-    bool postLog();
+    bool postLog(StudentInformation student);
+    bool postEvent(EventInformation event);
 
     //Updaters
-    bool updateLog();
+    bool updateLog(StudentInformation student);
 
     //Getters
     StudentInformation getStudent(QString ID);
     StudentInformation getStudent(QString firstName, QString lastName);
-
+    QList<StudentInformation> getStudentsCheckedIn();
+    QList<EventInformation> getActiveEvents();
     int getTableRowCount(QString table);
+    QList<QString> getLogs(QString fromTime, QString toTime);
+
+    //Checkers
+    bool checkIfStudentExists(StudentInformation student);
+    bool checkIfStudentSignedIn(QString ID);
+    bool checkAuthorizer(QString ID,QString PIN);
+
+
 
 private:
    QSqlDatabase database;
+   static DatabaseControllerSingleton* instance;
 
     DatabaseControllerSingleton()
     {
-        database = QSqlDatabase::addDatabase(DATABASE_TYPE);
-        database.setHostName(DATABASE_HOST_NAME);
-        database.setDatabaseName(DATABASE_NAME);
-        database.setUserName(DATABASE_USER_NAME);
-        database.setPassword(DATABASE_PASSWORD);
-        database.open();
+        //Anything that needs setup
     }
-    static DatabaseControllerSingleton* instance;
+
 
 };
 

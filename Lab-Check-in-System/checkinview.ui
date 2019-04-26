@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Student Sign In</string>
   </property>
   <widget class="QLabel" name="SwipeCardLabel">
    <property name="geometry">

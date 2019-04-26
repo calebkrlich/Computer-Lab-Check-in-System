@@ -33,6 +33,9 @@ public:
     QAction *actionChecked_In_Students;
     QAction *actionAdd_New_Class;
     QAction *actionRemove_Class;
+    QAction *actionSave_logs;
+    QAction *actionExit;
+    QAction *actionAdd_Faculty_Member;
     QWidget *centralwidget;
     QLabel *CheckInOptionsLabel;
     QGroupBox *groupBox;
@@ -49,7 +52,6 @@ public:
     QMenuBar *menubar;
     QMenu *menuLab_Check_in_System;
     QMenu *menuEdit;
-    QMenu *menuView;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *HomePageView)
@@ -67,6 +69,12 @@ public:
         actionAdd_New_Class->setObjectName(QString::fromUtf8("actionAdd_New_Class"));
         actionRemove_Class = new QAction(HomePageView);
         actionRemove_Class->setObjectName(QString::fromUtf8("actionRemove_Class"));
+        actionSave_logs = new QAction(HomePageView);
+        actionSave_logs->setObjectName(QString::fromUtf8("actionSave_logs"));
+        actionExit = new QAction(HomePageView);
+        actionExit->setObjectName(QString::fromUtf8("actionExit"));
+        actionAdd_Faculty_Member = new QAction(HomePageView);
+        actionAdd_Faculty_Member->setObjectName(QString::fromUtf8("actionAdd_Faculty_Member"));
         centralwidget = new QWidget(HomePageView);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setMaximumSize(QSize(16777215, 507));
@@ -95,12 +103,15 @@ public:
         SignedInTable->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         SignedInTable->setObjectName(QString::fromUtf8("SignedInTable"));
         SignedInTable->setGeometry(QRect(10, 30, 421, 331));
+        SignedInTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        SignedInTable->setTabKeyNavigation(true);
+        SignedInTable->setProperty("showDropIndicator", QVariant(true));
         groupBox_2 = new QGroupBox(centralwidget);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(0, 90, 191, 231));
+        groupBox_2->setGeometry(QRect(10, 100, 181, 251));
         verticalLayoutWidget = new QWidget(groupBox_2);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 20, 180, 141));
+        verticalLayoutWidget->setGeometry(QRect(10, 30, 168, 131));
         gridLayout = new QGridLayout(verticalLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -147,6 +158,7 @@ public:
         EventTable->setHorizontalHeaderItem(3, __qtablewidgetitem7);
         EventTable->setObjectName(QString::fromUtf8("EventTable"));
         EventTable->setGeometry(QRect(10, 30, 451, 331));
+        EventTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
         HomePageView->setCentralWidget(centralwidget);
         menubar = new QMenuBar(HomePageView);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -155,8 +167,6 @@ public:
         menuLab_Check_in_System->setObjectName(QString::fromUtf8("menuLab_Check_in_System"));
         menuEdit = new QMenu(menubar);
         menuEdit->setObjectName(QString::fromUtf8("menuEdit"));
-        menuView = new QMenu(menubar);
-        menuView->setObjectName(QString::fromUtf8("menuView"));
         HomePageView->setMenuBar(menubar);
         statusbar = new QStatusBar(HomePageView);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -164,10 +174,11 @@ public:
 
         menubar->addAction(menuLab_Check_in_System->menuAction());
         menubar->addAction(menuEdit->menuAction());
-        menubar->addAction(menuView->menuAction());
+        menuLab_Check_in_System->addAction(actionExit);
         menuEdit->addSeparator();
-        menuView->addAction(actionClass_Schedule);
-        menuView->addAction(actionChecked_In_Students);
+        menuEdit->addAction(actionSave_logs);
+        menuEdit->addSeparator();
+        menuEdit->addAction(actionAdd_Faculty_Member);
 
         retranslateUi(HomePageView);
 
@@ -181,6 +192,9 @@ public:
         actionChecked_In_Students->setText(QApplication::translate("HomePageView", "Checked In Students", nullptr));
         actionAdd_New_Class->setText(QApplication::translate("HomePageView", "Add New Class", nullptr));
         actionRemove_Class->setText(QApplication::translate("HomePageView", "Remove Class", nullptr));
+        actionSave_logs->setText(QApplication::translate("HomePageView", "Save logs...", nullptr));
+        actionExit->setText(QApplication::translate("HomePageView", "Exit", nullptr));
+        actionAdd_Faculty_Member->setText(QApplication::translate("HomePageView", "Add Faculty Member...", nullptr));
         CheckInOptionsLabel->setText(QApplication::translate("HomePageView", "Lab Check-in System", nullptr));
         groupBox->setTitle(QApplication::translate("HomePageView", "Signed-in Students", nullptr));
         QTableWidgetItem *___qtablewidgetitem = SignedInTable->horizontalHeaderItem(0);
@@ -207,7 +221,6 @@ public:
         ___qtablewidgetitem7->setText(QApplication::translate("HomePageView", "End Time", nullptr));
         menuLab_Check_in_System->setTitle(QApplication::translate("HomePageView", "File", nullptr));
         menuEdit->setTitle(QApplication::translate("HomePageView", "Edit", nullptr));
-        menuView->setTitle(QApplication::translate("HomePageView", "View", nullptr));
     } // retranslateUi
 
 };

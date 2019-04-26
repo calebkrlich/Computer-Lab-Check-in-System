@@ -3,11 +3,12 @@
 
 #include <QMainWindow>
 #include "checkinview.h"
-#include "checkimanualview.h"
+#include "checkinmanualview.h"
 #include "checkoutview.h"
 #include "addeventview.h"
 #include "eventinformation.h"
 #include "studentinformation.h"
+#include "savelogsview.h"
 
 namespace Ui {
 class HomePageView;
@@ -35,7 +36,15 @@ private slots:
 
     void newStudentToAdd(StudentInformation student);
 
-    void StudentToRemove(unsigned int studentID);
+    void StudentToRemove(QString studentID);
+
+    void EventNewWindowToConnect(CheckInManualView* newView);
+
+    void on_actionSave_logs_triggered();
+
+    void on_actionExit_triggered();
+
+    void on_actionAdd_Faculty_Member_triggered();
 
 private:
     Ui::HomePageView *ui;

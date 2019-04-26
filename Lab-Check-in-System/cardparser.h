@@ -4,37 +4,29 @@
 #include <QString>
 #include <QDebug>
 #include <QMessageBox>
-
-struct CardInfo
-{
-    QString status;
-    unsigned int ID;
-    QString firstName;
-    QString lastName;
-    QString middleInitial;
-    QString birthday;
-    QString registrationDate;
-
-};
+#include "studentinformation.h"
+#include <QDate>
+#include <QRegularExpressionMatch>
+#include <QRegularExpression>
 
 class CardParser
 {
 private:
-    CardInfo cardInfo;
+    StudentInformation cardInfo;
 
 public:
     CardParser();
     bool Parse(QString cardData);
 
     QString getStatus();
-    unsigned int getID();
+    QString getID();
     QString getFirstname();
     QString getLastname();
     QString getMiddleInitial();
     QString getBirthday();
     QString getRegistrationDate();
 
-    CardInfo getInfo();
+    StudentInformation getInfo();
     void printInfo();
 };
 

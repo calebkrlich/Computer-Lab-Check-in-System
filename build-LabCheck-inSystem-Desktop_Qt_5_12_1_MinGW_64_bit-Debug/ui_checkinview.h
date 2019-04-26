@@ -79,7 +79,7 @@ public:
 
     void retranslateUi(QDialog *CheckInView)
     {
-        CheckInView->setWindowTitle(QApplication::translate("CheckInView", "Dialog", nullptr));
+        CheckInView->setWindowTitle(QApplication::translate("CheckInView", "Student Sign In", nullptr));
         SwipeCardLabel->setText(QApplication::translate("CheckInView", "Swipe Card", nullptr));
         CancelButton->setText(QApplication::translate("CheckInView", "Cancel", nullptr));
         CheckInButton->setText(QApplication::translate("CheckInView", "Check In", nullptr));

@@ -9,7 +9,7 @@
 #include <QMessageBox>
 
 #include "studentinformation.h"
-#include "databasecontroller.h"
+#include "databasecontrollersingleton.h"
 
 namespace Ui {
 class CheckOutView;
@@ -34,7 +34,7 @@ private slots:
     void on_CheckOutButton_clicked();
 
 signals:
-    void EventStudentCheckOut(unsigned int studentID);
+    void EventStudentCheckOut(QString studentID);
 
 private:
     Ui::CheckOutView *ui;

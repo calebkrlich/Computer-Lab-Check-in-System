@@ -3,8 +3,10 @@
 
 #include <QDialog>
 #include "cardparser.h"
-#include "checkimanualview.h"
+#include "checkinmanualview.h"
 #include "studentinformation.h"
+#include "databasecontrollersingleton.h"
+#include "authorizationview.h"
 
 namespace Ui {
 class CheckInView;
@@ -20,11 +22,12 @@ public:
 
 private:
     Ui::CheckInView *ui;
-    CheckIManualView *checkInManualView;
+    CheckInManualView *checkInManualView;
+    AuthorizationView *authorizationView;
 
 signals:
     void EventStudentCheckedIn(StudentInformation student);
-
+    bool EventConnectToNewManualView(CheckInManualView* newView);
 
 private slots:
     void on_CheckInButton_clicked();

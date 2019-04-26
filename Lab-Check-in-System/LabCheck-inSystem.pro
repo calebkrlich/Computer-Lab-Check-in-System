@@ -16,13 +16,13 @@ SOURCES += \
         main.cpp \
     checkinview.cpp \
     homepageview.cpp \
-    checkedinview.cpp \
     cardparser.cpp \
-    checkimanualview.cpp \
     checkoutview.cpp \
-    databasecontroller.cpp \
     addeventview.cpp \
-    databasecontrollersingleton.cpp
+    databasecontrollersingleton.cpp \
+    checkinmanualview.cpp \
+    authorizationview.cpp \
+    savelogsview.cpp
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -38,24 +38,25 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     checkinview.h \
     homepageview.h \
-    checkedinview.h \
     cardparser.h \
-    checkimanualview.h \
     checkoutview.h \
-    databasecontroller.h \
     studentinformation.h \
     tablemethods.h \
     addeventview.h \
     eventinformation.h \
-    databasecontrollersingleton.h
+    databasecontrollersingleton.h \
+    checkinmanualview.h \
+    authorizationview.h \
+    savelogsview.h
 
 FORMS += \
     checkinview.ui \
     homepageview.ui \
-    checkedinview.ui \
-    checkimanualview.ui \
     checkoutview.ui \
-    addeventview.ui
+    addeventview.ui \
+    checkinmanualview.ui \
+    authorizationview.ui \
+    savelogsview.ui
 
 DISTFILES += \
     logo_1.png.jpg

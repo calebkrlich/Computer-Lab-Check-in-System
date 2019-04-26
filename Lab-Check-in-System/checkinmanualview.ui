@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CheckIManualView</class>
- <widget class="QDialog" name="CheckIManualView">
+ <class>CheckInManualView</class>
+ <widget class="QDialog" name="CheckInManualView">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -54,19 +54,6 @@
       </property>
      </widget>
     </item>
-    <item>
-     <widget class="QPushButton" name="pushButton">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Swipe Card</string>
-      </property>
-     </widget>
-    </item>
    </layout>
   </widget>
   <widget class="QWidget" name="formLayoutWidget">
@@ -95,7 +82,7 @@
     <item row="2" column="0">
      <widget class="QLabel" name="ySUIDLabel">
       <property name="text">
-       <string>YSU ID:</string>
+       <string>YSU ID: </string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -167,7 +154,6 @@
   <tabstop>birthdayDateEdit</tabstop>
   <tabstop>CheckInButton</tabstop>
   <tabstop>CancelButton</tabstop>
-  <tabstop>pushButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>
