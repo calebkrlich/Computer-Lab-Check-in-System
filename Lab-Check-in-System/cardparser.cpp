@@ -21,12 +21,24 @@ StudentInformation CardParser::getInfo() { return cardInfo; }
 //((%S)|(%X)|(%E))(\\)([0-9]*)(\\)([A-Z]*)(\\)([A-Z]*)(\\)([A-Z]*)(\\)(([0-9]*)(\/)([0-9]*)(\/)([0-9]*)?)(((\\)([0-9]+)(\/)([0-9]+)(\/)([0-9]+)(\?))|(\?))(\@)([0-9]+)(\?&Y)([0-9]+)(\?)
 bool CardParser::Parse(QString cardData)
 {
+
+    QRegularExpression regexCardMatch("((%S)|(%X)|(%E))(\\\\)([0-9]*)(\\\\)([A-Z]*)(\\\\)([A-Z]*)(\\\\)([A-Z]*)(\\\\)(([0-9]*)(\\/)([0-9]*)(/)([0-9]*)?)(((\\\\)([0-9]+)(/)([0-9]+)(/)([0-9]+)(\\?))|(\\?))(\\@)([0-9]+)(\\?&Y)([0-9]+)(\\?)");
+
+    QRegularExpressionMatch regexMatch = regexCardMatch.match(cardData);
+
+    if(!regexMatch.hasMatch())
+    {
+        return false;
+    }
+
+    /*
     //Check if the input is valid card Info
     if(cardData.contains(';') || cardData[0].toLatin1() != '%'
            || !cardData.contains('@'))
     {
         return false;
     }
+    */
 
     QStringList garbageRemovalSplit = cardData.split('?');
 

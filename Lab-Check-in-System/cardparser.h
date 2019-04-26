@@ -6,6 +6,8 @@
 #include <QMessageBox>
 #include "studentinformation.h"
 #include <QDate>
+#include <QRegularExpressionMatch>
+#include <QRegularExpression>
 
 class CardParser
 {
