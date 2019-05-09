@@ -153,7 +153,7 @@ public:
 
     void retranslateUi(QDialog *CheckInManualView)
     {
-        CheckInManualView->setWindowTitle(QApplication::translate("CheckInManualView", "Dialog", nullptr));
+        CheckInManualView->setWindowTitle(QApplication::translate("CheckInManualView", "Manual Check-in", nullptr));
         CheckInButton->setText(QApplication::translate("CheckInManualView", "Check-In", nullptr));
         CancelButton->setText(QApplication::translate("CheckInManualView", "Cancel", nullptr));
         nameLabel->setText(QApplication::translate("CheckInManualView", "First Name:", nullptr));

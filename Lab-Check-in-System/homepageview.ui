@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Lab Sign-in System</string>
+   <string>Lab Check-in System</string>
   </property>
   <property name="animated">
    <bool>true</bool>

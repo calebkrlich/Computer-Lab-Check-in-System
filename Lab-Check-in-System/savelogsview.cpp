@@ -1,5 +1,6 @@
 #include "savelogsview.h"
 #include "ui_savelogsview.h"
+#include <QMessageBox>
 
 SaveLogsView::SaveLogsView(QWidget *parent) :
     QDialog(parent),
@@ -48,4 +49,10 @@ void SaveLogsView::on_SaveButton_clicked()
 
 
     fileToSave.close();
+    QMessageBox msgBox;
+    msgBox.setText("Logs saved to file");
+    msgBox.setWindowTitle("Sucess!");
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.exec();
+    this->close();
 }

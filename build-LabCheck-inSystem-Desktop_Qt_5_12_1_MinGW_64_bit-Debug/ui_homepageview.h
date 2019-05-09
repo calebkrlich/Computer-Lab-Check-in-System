@@ -187,7 +187,7 @@ public:
 
     void retranslateUi(QMainWindow *HomePageView)
     {
-        HomePageView->setWindowTitle(QApplication::translate("HomePageView", "Lab Sign-in System", nullptr));
+        HomePageView->setWindowTitle(QApplication::translate("HomePageView", "Lab Check-in System", nullptr));
         actionClass_Schedule->setText(QApplication::translate("HomePageView", "Class Schedule", nullptr));
         actionChecked_In_Students->setText(QApplication::translate("HomePageView", "Checked In Students", nullptr));
         actionAdd_New_Class->setText(QApplication::translate("HomePageView", "Add New Class", nullptr));

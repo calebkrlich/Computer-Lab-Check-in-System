@@ -165,7 +165,8 @@ QList<QString> DatabaseControllerSingleton::getLogs(QString fromTime, QString to
         temp += query.value(0).toString() + ",";
         temp += query.value(1).toString() + ",";
         temp += query.value(2).toString() + ",";
-        temp += query.value(3).toString();
+        temp += query.value(3).toString() + ",";
+        temp += query.value(4).toString();
 
         listToReturn.append(temp);
     }

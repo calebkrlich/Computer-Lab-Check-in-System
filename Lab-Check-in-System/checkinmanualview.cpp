@@ -33,20 +33,28 @@ void CheckInManualView::on_CheckInButton_clicked()
     if(DatabaseControllerSingleton::getInstance()->
             checkIfStudentExists(student))
     {
-        if(DatabaseControllerSingleton::getInstance()->postLog(student))
+        if(!DatabaseControllerSingleton::getInstance()->checkIfStudentSignedIn(student.ID))
         {
-            student.checkInTime = QDateTime::currentDateTime().toString();
-            emit(EventStudentCheckedIn(student));
+            if(DatabaseControllerSingleton::getInstance()->postLog(student))
+            {
+                student.checkInTime = QDateTime::currentDateTime().toString();
+                emit(EventStudentCheckedIn(student));
 
-            QMessageBox conformationBox;
-            conformationBox.setText("Student signed-in");
-            conformationBox.exec();
-            this->close();
-        }
+                QMessageBox conformationBox;
+                conformationBox.setText("Student signed-in");
+                conformationBox.exec();
+                this->close();
+            }
+            else {
+                QMessageBox warningBox;
+                warningBox.setText("Database couldn't be accessed");
+                warningBox.exec();
+            }
+         }
         else {
-            QMessageBox warningBox;
-            warningBox.setText("Database couldn't be accessed");
-            warningBox.exec();
+            QMessageBox signedInMsgBox;
+            signedInMsgBox.setText("Student already signed-in");
+            signedInMsgBox.exec();
         }
     }
     else {
